@@ -77,7 +77,7 @@ const Filter = () => {
                                 <input
                                     type="number"
                                     name="minPrice"
-                                    placeholder="Min (KES)"
+                                    placeholder="Min Price in (KES)"
                                     className="flex-1 py-3 px-4 rounded-full border border-gray-200 focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/30 text-sm"
                                     onChange={handleInputChange}
                                 />
@@ -85,7 +85,7 @@ const Filter = () => {
                                 <input
                                     type="number"
                                     name="maxPrice"
-                                    placeholder="Max (KES)"
+                                    placeholder="Max Price in (KES)"
                                     className="flex-1 py-3 px-4 rounded-full border border-gray-200 focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/30 text-sm"
                                     onChange={handleInputChange}
                                 />
@@ -111,11 +111,13 @@ const Filter = () => {
                                 name="sort"
                                 className="w-full py-3 px-4 rounded-full border border-gray-200 focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/30 bg-white text-sm"
                                 onChange={handleInputChange}
+                                value={searchParams.get('sort') || ''}
                             >
+                                <option>Sort By</option>
                                 <option value="asc price">Price (low to high)</option>
                                 <option value="desc price">Price (high to low)</option>
                                 <option value="asc lastUpdated">Newest</option>
-                                <option value="desc lastUpdated">Price (high to low)</option>
+                                <option value="desc lastUpdated">Oldest</option>
                             </select>
                         </div>
                     )}
@@ -123,17 +125,18 @@ const Filter = () => {
                     {/* Sort By - Desktop */}
                     {!isMobile && (
                         <div className="flex items-center gap-2">
-                            <span className="text-sm text-gray-500">Sort by:</span>
+
                             <select
                                 name="sort"
                                 className="py-2 px-4 rounded-full border border-gray-200 focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] bg-white text-xs"
                                 onChange={handleInputChange}
+                                value={searchParams.get('sort') || ''}
                             >
-                                <option value="featured">Featured</option>
-                                <option value="price-asc">Price: Low to High</option>
-                                <option value="price-desc">Price: High to Low</option>
-                                <option value="newest">New Arrivals</option>
-                                <option value="bestselling">Bestsellers</option>
+                                <option>Sort By</option>
+                                <option value="asc price">Price (low to high)</option>
+                                <option value="desc price">Price (high to low)</option>
+                                <option value="asc lastUpdated">Newest</option>
+                                <option value="desc lastUpdated">Oldest</option>
                             </select>
                         </div>
                     )}

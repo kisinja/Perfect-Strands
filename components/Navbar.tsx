@@ -24,7 +24,6 @@ const Navbar = () => {
     const softGold = "#D4AF37";
 
     const { counter } = useStore();
-    console.log(counter);
 
     return (
         <nav className="w-full border-b border-gray-200 bg-white shadow-sm sticky top-0 z-50 px-6 md:px-12 lg:px-20">

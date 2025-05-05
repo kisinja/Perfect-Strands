@@ -49,7 +49,7 @@ const CatDropdown = ({ handleFilterChange }: CatDropdownProps) => {
             <DropdownMenuTrigger asChild>
                 <Button
                     variant="outline"
-                    className="flex items-center gap-2 border-gray-200 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/30"
+                    className="flex items-center gap-2 border-gray-200 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/30 w-full py-3 px-4 rounded-full border focus:border-[#D4AF37] "
                 >
                     {selectedCategory}
                     <ChevronDown className="h-4 w-4 opacity-50" />

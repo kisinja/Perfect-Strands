@@ -10,7 +10,7 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 const Shop = async ({ searchParams }: { searchParams: SearchParams }) => {
     const wixClient = await wixClientServer();
 
-    const slug = searchParams.cat;
+    const slug = searchParams?.cat;
 
     const cat = await wixClient.collections
         .getCollectionBySlug(slug || 'all-products');
