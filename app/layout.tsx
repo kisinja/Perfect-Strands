@@ -4,6 +4,7 @@ import { Poppins } from 'next/font/google';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { WixClientContextProvider } from "@/context/wixContext";
+import { Toaster } from "@/components/ui/sonner";
 
 // Configure Poppins font with required weights
 const poppins = Poppins({
@@ -37,6 +38,7 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
+          <Toaster position="bottom-left" />
         </WixClientContextProvider>
       </body>
     </html>

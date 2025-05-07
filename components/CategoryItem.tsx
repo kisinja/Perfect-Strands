@@ -17,7 +17,7 @@ const CategoryItem = ({ category }: { category: collections.Collection }) => {
             </div>
             <h1 className='mt-8 font-light tracking-wide'>{category.name}</h1>
         </Link>
-    );
+    );k
 };
 
 export default CategoryItem;
