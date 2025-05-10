@@ -3,6 +3,7 @@ import { products, collections } from "@wix/stores";
 import { items } from "@wix/data";
 import { cookies } from "next/headers";
 import { members } from "@wix/members";
+import { currentCart } from '@wix/ecom';
 
 export const wixClientServer = async () => {
 
@@ -28,6 +29,7 @@ export const wixClientServer = async () => {
             collections,
             items,
             members,
+            currentCart,
         },
         auth: OAuthStrategy({
             clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID!,

@@ -5,7 +5,7 @@ import { wixClientServer } from '@/lib/wixClientServer';
 import Pagination from './Pagination';
 
 
-const PRODUCTS_PER_PAGE = 4;
+const PRODUCTS_PER_PAGE = 8;
 
 const ProductList = async (
     {
@@ -16,6 +16,7 @@ const ProductList = async (
         {
             categoryId: string,
             limit?: number,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             searchParams?: any,
         }
 ) => {

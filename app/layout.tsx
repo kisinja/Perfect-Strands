@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Poppins } from 'next/font/google';
+//import { Poppins } from 'next/font/google';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { WixClientContextProvider } from "@/context/wixContext";
 import { Toaster } from "@/components/ui/sonner";
 
 // Configure Poppins font with required weights
-const poppins = Poppins({
+/* const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-poppins',
   display: 'swap',
-});
+}); */
 
 export const metadata: Metadata = {
   title: "Perfect Strands",
@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} scroll-smooth`}>
+    <html lang="en" className={` scroll-smooth`}>
       <body className="font-sans bg-white antialiased">
         <WixClientContextProvider>
           <div className="min-h-screen flex flex-col">

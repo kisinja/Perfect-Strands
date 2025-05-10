@@ -7,7 +7,7 @@ import { useState } from "react";
 import SearchInput from "./SearchInput";
 import CartModal from "./CartModal";
 import NavProfile from "./NavProfile";
-import { useStore } from "@/hooks/useCartStore";
+import { useCartStore } from "@/hooks/useCartStore";
 
 const navLinks = [
     { name: 'Home', href: '/', icon: Home },
@@ -23,7 +23,7 @@ const Navbar = () => {
     const [isCartOpen, setIsCartOpen] = useState(false); // Replace with actual cart state
     const softGold = "#D4AF37";
 
-    const { counter } = useStore();
+    const { counter } = useCartStore();
 
     return (
         <nav className="w-full h-[65px] border-b border-gray-200 bg-white shadow-sm sticky top-0 z-50 px-6 md:px-12 lg:px-20">

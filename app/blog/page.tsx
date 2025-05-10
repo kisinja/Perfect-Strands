@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { format } from 'date-fns';
 import { useWixClient } from '@/hooks/useWixCient';
-import { FaRegClock, FaSearch } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 
 interface BlogPost {
     _id: string;
@@ -21,7 +21,6 @@ interface BlogPost {
     isPublished: boolean;
     categories: string[];
     tags: string[];
-    readTime?: number;
 }
 
 const Blog = () => {
@@ -39,11 +38,7 @@ const Blog = () => {
                     .eq('isPublished', true)
                     .descending('publishedAt')
                     .find();
-                const postsWithReadTime = postRes.items.map(post => ({
-                    ...post,
-                    readTime: Math.ceil(post.content.split(' ').length / 200)
-                }));
-                setPosts(postsWithReadTime as BlogPost[]);
+                setPosts(postRes.items as BlogPost[]);
             } catch (error) {
                 console.error('Error fetching posts:', error);
             } finally {
@@ -192,9 +187,9 @@ const Blog = () => {
                                                 <div className="flex items-center gap-2 text-[#5C5C5C] text-sm mb-4">
                                                     <span>{format(new Date(post.publishedAt), 'MMMM dd, yyyy')}</span>
                                                     <span className="w-1 h-1 bg-[#5C5C5C] rounded-full"></span>
-                                                    <span className="flex items-center gap-1">
+                                                    {/* <span className="flex items-center gap-1">
                                                         <FaRegClock className="text-xs" /> {post.readTime} min read
-                                                    </span>
+                                                    </span> */}
                                                 </div>
                                                 <p className="text-[#5C5C5C] mb-4 line-clamp-3">
                                                     {post.excerpt}
