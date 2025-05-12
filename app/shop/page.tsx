@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import Filter from '@/components/Filter';
 import ProductList from '@/components/ProductList';
 import { wixClientServer } from '@/lib/wixClientServer';
