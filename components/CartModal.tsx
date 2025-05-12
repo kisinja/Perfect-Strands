@@ -80,7 +80,7 @@ const CartModal = () => {
                             {item.quantity} x{" "}
                           </div>
                         )}
-                        {formatPrice(item.price?.amount)}
+                        {typeof item.price?.amount === "number" && formatPrice(item.price.amount)}
                       </div>
                     </div>
                     {/* DESC */}

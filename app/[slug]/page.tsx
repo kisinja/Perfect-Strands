@@ -5,14 +5,10 @@ import ProductItem from "@/components/ProductItem";
 import { wixClientServer } from "@/lib/wixClientServer";
 import React from "react";
 
-type ParamsProps = Promise<{
-  params:{
-    slug: string;
-  }
-}>;
+type ParamsProps = Promise<{ slug: string }>;
 
 const ProductDetails = async ({ params }: { params: ParamsProps }) => {
-  const slug = (await params).params.slug;
+  const {slug} = await params;
   const wixClient = await wixClientServer();
 
   const res = await wixClient.products.queryProducts().eq("slug", slug).find();

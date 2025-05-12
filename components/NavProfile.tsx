@@ -71,7 +71,7 @@ const NavProfile = () => {
                             ) : (
                                 <DropdownMenuItem className="cursor-pointer">
                                     <span>
-                                        <Link href="/auth/login">Sign In</Link>
+                                        <Link href="#">Sign In</Link>
                                     </span>
                                 </DropdownMenuItem>
                             )
