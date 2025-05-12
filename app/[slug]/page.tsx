@@ -6,11 +6,13 @@ import { wixClientServer } from "@/lib/wixClientServer";
 import React from "react";
 
 type ParamsProps = Promise<{
-  slug: string;
+  params:{
+    slug: string;
+  }
 }>;
 
 const ProductDetails = async ({ params }: { params: ParamsProps }) => {
-  const slug = (await params).slug;
+  const slug = (await params).params.slug;
   const wixClient = await wixClientServer();
 
   const res = await wixClient.products.queryProducts().eq("slug", slug).find();
