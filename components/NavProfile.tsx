@@ -34,11 +34,12 @@ const NavProfile = () => {
         }
     };
 
-    const handleClick = () => { 
+    const handleClick = () => {
         if (isLoggedIn) {
             setIsProfileOpen(!isProfileOpen);
+        } else {
+            router.push('/auth/login');
         }
-        router.push('/auth/login');
     };
 
     return (
@@ -60,10 +61,10 @@ const NavProfile = () => {
                             isLoggedIn ? (
                                 <>
                                     <DropdownMenuItem className="cursor-pointer">
-                                        <span>Hello, user</span>
+                                    <span>Hello, user</span>
                                     </DropdownMenuItem>
                                     <div>
-                                        <Button variant="default" className="w-full cursor-pointer" onClick={handleLogout}>
+                                        <Button variant="destructive" className="w-full cursor-pointer" onClick={handleLogout}>
                                             {isLoading ? "Logging out..." : "Logout"}
                                         </Button>
                                     </div>
