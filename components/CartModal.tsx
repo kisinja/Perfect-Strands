@@ -6,6 +6,7 @@ import { media as wixMedia } from "@wix/sdk";
 import { useWixClient } from "@/hooks/useWixCient";
 import { formatPrice } from "@/utils";
 import { useEffect } from "react";
+import { FaSpinner } from "react-icons/fa";
 
 const CartModal = ({ onClose }: { onClose: () => void }) => {
   const wixClient = useWixClient();
@@ -14,6 +15,10 @@ const CartModal = ({ onClose }: { onClose: () => void }) => {
   useEffect(() => {
     getCart(wixClient);
   }, [cart, wixClient, getCart]);
+
+  if(isLoading){
+    return <div className="text-gray-500 text-sm flex items-center"> <FaSpinner className="mr-2"/> Loading cart...</div>
+  }
 
   return (
     <div className="z-50">
