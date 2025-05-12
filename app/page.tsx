@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 //import HeroBanner from '@/components/HeroBanner';
 import ProductList from "@/components/ProductList";
 import CategoryList from "@/components/CategoryList";
