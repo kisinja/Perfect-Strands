@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ShoppingBag, Home, BookOpen, UserRound, Phone } from "lucide-react";
+import { Menu, X, ShoppingBag, Home, UserRound, Phone } from "lucide-react";
 import { useState } from "react";
 import SearchInput from "./SearchInput";
 import CartModal from "./CartModal";
@@ -12,7 +12,6 @@ import { useCartStore } from "@/hooks/useCartStore";
 const navLinks = [
     { name: 'Home', href: '/', icon: Home },
     { name: 'Shop', href: '/shop', icon: ShoppingBag },
-    { name: 'Blog', href: '/blog', icon: BookOpen },
     { name: 'About', href: '/about', icon: UserRound },
     { name: 'Contact', href: '/contact', icon: Phone },
 ];

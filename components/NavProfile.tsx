@@ -9,6 +9,7 @@ import { useWixClient } from "@/hooks/useWixCient";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 
+
 const NavProfile = () => {
 
     const wixClient = useWixClient();
