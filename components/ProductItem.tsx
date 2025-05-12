@@ -1,4 +1,3 @@
-import { formatPrice } from '@/utils'
 import { products } from '@wix/stores'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -30,7 +29,7 @@ const ProductItem = ({ product }: { product: products.Product }) => {
             <div className="flex justify-between">
                 <span className='font-medium line-clamp-1'>{product.name}</span>
                 <span className='font-semibold'>
-                    {formatPrice(product.price?.price)}
+                    {product.priceData?.formatted?.price}
                 </span>
             </div>
 
