@@ -80,7 +80,7 @@ const Navbar = () => {
 
                                 {
                                     isCartOpen && (
-                                        <CartModal />
+                                        <CartModal onClose={() => setIsCartOpen(false)} />
                                     )
                                 }
                             </div>

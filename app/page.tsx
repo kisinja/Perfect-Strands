@@ -1,6 +1,6 @@
 export const dynamic = 'force-dynamic';
 
-//import HeroBanner from '@/components/HeroBanner';
+import HeroBanner from '@/components/HeroBanner';
 import ProductList from "@/components/ProductList";
 import CategoryList from "@/components/CategoryList";
 import { Suspense } from "react";
@@ -16,7 +16,7 @@ const Homepage = async () => {
   return (
     <div className="">
       <Slider />
-      {/* <HeroBanner /> */}
+      <HeroBanner />
       <section className="mt-24" id="featured-products">
         <h1 className="mb-12 text-2xl">Featured Products</h1>
         <Suspense fallback={"loading..."}>

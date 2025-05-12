@@ -30,7 +30,7 @@ export const Slider = () => {
     }; */
 
     return (
-        <div className="relative h-[calc(100vh-80px)] w-full overflow-hidden">
+        <div className="relative h-[calc(100vh-80px)] w-full overflow-hidden hidden md:block">
             {/* Slides container */}
             <div
                 className="flex h-full transition-transform duration-500 ease-in-out"
