@@ -23,6 +23,7 @@ const Homepage = async () => {
           <ProductList
             categoryId={process.env.FEATURED_PRODUCTS_CATEGORY_ID!}
             limit={4}
+            type="homepage"
           />
         </Suspense>
       </section>
