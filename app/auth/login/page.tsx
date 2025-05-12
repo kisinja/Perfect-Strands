@@ -2,7 +2,7 @@
 
 import { useWixClient } from "@/hooks/useWixCient";
 import { LoginState } from "@wix/sdk";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
@@ -28,7 +28,13 @@ const Login = () => {
 
   const router = useRouter();
 
-  const pathName = window.location.href;
+  const [pathName, setPathName] = useState<string>("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setPathName(window.location.href);
+    }
+  }, []);
 
   const formTitle =
     mode === MODE.LOGIN
