@@ -4,14 +4,8 @@ import { wixClientServer } from '@/lib/wixClientServer';
 import Image from 'next/image';
 import React, { Suspense } from 'react';
 
-type SearchParams = Promise<
-    {
-        [key: string]: string | string[] | undefined;
-        cat?: string;
-        sort?: string;
-    }>;
-
-const Shop = async ({ searchParams }: { searchParams: SearchParams }) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Shop = async ({ searchParams }: { searchParams: any }) => {
     const wixClient = await wixClientServer();
 
     // Get the category slug from searchParams
