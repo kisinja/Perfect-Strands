@@ -44,7 +44,7 @@ const HeroBanner: React.FC = () => {
             </button>
           </Link>
           <Link href="/contact">
-            <button className="border-2 border-white text-white hover:bg-white/10 px-6 py-3 rounded-full font-medium transition-all">
+            <button className="border-2 border-white text-white hover:bg-white/10 px-6 py-3 rounded-full font-medium transition-all ">
               Book Consultation
             </button>
           </Link>
