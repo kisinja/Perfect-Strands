@@ -89,7 +89,7 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
         <section>
           {relatedProducts.length > 0 ? (
             <>
-              <h1 className="font-sembold text-2xl my-12">Related Products</h1>
+              <h1 className="font-sembold text-2xl my-12">Related to {"'"}{product.name}{"'"}</h1>
               <div className="flex gap-x-8 gap-y-16 justify-between flex-wrap">
                 {relatedProducts?.map((p) => (
                   <ProductItem key={p._id} product={p} />
