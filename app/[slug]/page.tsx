@@ -8,7 +8,7 @@ import React from "react";
 type ParamsProps = Promise<{ slug: string }>;
 
 const ProductDetails = async ({ params }: { params: ParamsProps }) => {
-  const {slug} = await params;
+  const { slug } = await params;
   const wixClient = await wixClientServer();
 
   const res = await wixClient.products.queryProducts().eq("slug", slug).find();
@@ -85,24 +85,26 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
         </div>
       </section>
       <div className="w-full h-[2px] bg-gray-100" />
-      <section>
-        {relatedProducts.length > 0 ? (
-          <>
-            <h1 className="font-sembold text-2xl my-12">Related Products</h1>
-            <div className="flex gap-x-8 gap-y-16 justify-between flex-wrap">
-              {relatedProducts?.map((p) => (
-                <ProductItem key={p._id} product={p} />
-              ))}
+      {relatedProducts && (
+        <section>
+          {relatedProducts.length > 0 ? (
+            <>
+              <h1 className="font-sembold text-2xl my-12">Related Products</h1>
+              <div className="flex gap-x-8 gap-y-16 justify-between flex-wrap">
+                {relatedProducts?.map((p) => (
+                  <ProductItem key={p._id} product={p} />
+                ))}
+              </div>
+            </>
+          ) : (
+            <div className="flex flex-col items-center justify-center h-[50vh]">
+              <h3 className="text-gray-600 text-xl text-center">
+                No related products found
+              </h3>
             </div>
-          </>
-        ) : (
-          <div className="flex flex-col items-center justify-center h-[50vh]">
-            <h3 className="text-gray-600 text-xl text-center">
-              No related products found
-            </h3>
-          </div>
-        )}
-      </section>
+          )}
+        </section>
+      )}
     </>
   );
 };
