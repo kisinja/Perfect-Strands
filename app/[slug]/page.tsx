@@ -84,20 +84,23 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
             ))}
         </div>
       </section>
-      <div className="w-full h-[2px] bg-gray-100" />
+
       {relatedProducts && relatedProducts.length > 0 && (
-        <section>
-          <h1 className="font-sembold text-2xl my-12">
-            Related to {"'"}
-            {product.name}
-            {"'"}
-          </h1>
-          <div className="flex gap-x-8 gap-y-16 justify-between flex-wrap">
-            {relatedProducts?.map((p) => (
-              <ProductItem key={p._id} product={p} />
-            ))}
-          </div>
-        </section>
+        <>
+          <div className="w-full h-[2px] bg-gray-100" />
+          <section>
+            <h1 className="font-sembold text-2xl my-12">
+              Related to {"'"}
+              {product.name}
+              {"'"}
+            </h1>
+            <div className="flex gap-x-8 gap-y-16 justify-between flex-wrap">
+              {relatedProducts?.map((p) => (
+                <ProductItem key={p._id} product={p} />
+              ))}
+            </div>
+          </section>
+        </>
       )}
     </>
   );
