@@ -17,6 +17,7 @@ export const generateMetadata = async ({
   const wixClient = await wixClientServer();
   const res = await wixClient.products.queryProducts().eq("slug", slug).find();
   const product = res.items[0];
+
   if (!product) {
     return {
       title: "Product not found",
@@ -25,8 +26,30 @@ export const generateMetadata = async ({
   }
 
   return {
-    title: product?.name,
-    description: product?.description,
+    title: product.name,
+    description: product.description,
+    openGraph: {
+      title: product.name || "",
+      description: product.description || "",
+      type: "website",
+      url: `https://perfect-strands.vercel.app/shop/${slug}`,
+      images: product.media?.items?.[0]?.image?.url
+        ? [{ url: product.media.items[0].image.url }]
+        : [],
+      siteName: "Perfect Strands",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: product.name || "",
+      description: product.description || "",
+      images: product.media?.items?.[0]?.image?.url
+        ? [product.media.items[0].image.url]
+        : [],
+    },
+    metadataBase: new URL("https://perfect-strands.vercel.app"),
+    alternates: {
+      canonical: `/shop/${slug}`,
+    },
   };
 };
 
@@ -36,6 +59,7 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
 
   const res = await wixClient.products.queryProducts().eq("slug", slug).find();
   const product = res.items[0];
+
   if (!product) {
     return <h1>Product not found</h1>;
   }
@@ -50,10 +74,31 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
     (item) => item._id !== product._id
   );
 
-  console.log(product);
-
   return (
     <>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            name: product.name,
+            image: product.media?.items?.map((i) => i.image?.url),
+            description: product.description,
+            sku: product._id,
+            offers: {
+              "@type": "Offer",
+              priceCurrency: "USD",
+              price: product.price?.discountedPrice ?? product.price?.price,
+              availability:
+                (product.stock?.quantity ?? 0) > 0 ? "InStock" : "OutOfStock",
+              url: `https://yourdomain.com/shop/${product.slug}`,
+            },
+          }),
+        }}
+      />
+
       <section className="flex flex-col md:flex-row gap-16 pb-6">
         <div className="w-full lg:w-1/2 lg:sticky top-20 h-max">
           <ProductImages items={product.media?.items} />
@@ -95,16 +140,16 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
             />
           )}
           <div className="h-[2px] bg-gray-100" />
-          {product.additionalInfoSections &&
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            product.additionalInfoSections?.map((section: any) => (
-              <div className="text-sm" key={section.title}>
-                <h4 className="font-medium mb-4 underline">{section.title}</h4>
-                <div
-                  dangerouslySetInnerHTML={{ __html: section.description }}
-                />
-              </div>
-            ))}
+
+           {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+          {product.additionalInfoSections?.map((section: any) => (
+            <div className="text-sm" key={section.title}>
+              <h3 className="font-medium mb-4 underline">{section.title}</h3>
+              <div
+                dangerouslySetInnerHTML={{ __html: section.description }}
+              />
+            </div>
+          ))}
         </div>
       </section>
 
@@ -112,13 +157,11 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
         <>
           <div className="w-full h-[2px] bg-gray-100" />
           <section>
-            <h1 className="font-sembold text-2xl my-12">
-              Related to {"'"}
-              {product.name}
-              {"'"}
-            </h1>
+            <h2 className="font-semibold text-2xl my-12">
+              Related to “{product.name}”
+            </h2>
             <div className="flex gap-x-8 gap-y-16 justify-between flex-wrap">
-              {relatedProducts?.map((p) => (
+              {relatedProducts.map((p) => (
                 <ProductItem key={p._id} product={p} />
               ))}
             </div>
