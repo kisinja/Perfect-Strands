@@ -65,7 +65,7 @@ const ContactForm = () => {
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           We&apos;d love to hear from you! Reach out with questions or feedback.
         </p>
-        <div className="w-24 h-1 bg-[#D4AF37] mx-auto mt-6"></div>
+        <div className="w-24 h-1 bg-[#D4AF37] mx-auto mt-6 rounded-full"></div>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-12 w-full">
