@@ -50,7 +50,7 @@ const Homepage = async () => {
 
       {/* Featured Products */}
       <section className="mt-24 px-4 md:px-12" id="featured-products">
-        <h2 className="mb-12 text-2xl font-semibold text-gray-800">
+        <h2 className="mb-12 text-2xl font-light text-gray-700 tracking-wide">
           Featured Wigs & Hair Extensions
         </h2>
         <Suspense fallback={<ProductsListSkeleton />}>
@@ -64,8 +64,8 @@ const Homepage = async () => {
 
       {/* Product Categories */}
       <div className="mt-24 " id="categories">
-        <h2 className="mb-12 text-2xl font-semibold text-gray-800 px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-64">
-          Shop by Wig Category
+        <h2 className="mb-12 text-2xl font-light text-gray-700 tracking-wide px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-64">
+          Wig Categories
         </h2>
         <Suspense fallback={<CategoriesListSkeleton />}>
           <CategoryList />
