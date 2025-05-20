@@ -21,7 +21,7 @@ const ReturnsPolicy = () => {
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Our commitment to your satisfaction
             </p>
-            <div className="w-24 h-1 bg-[#D4AF37] mx-auto mt-6"></div>
+            <div className="w-24 h-1 bg-[#D4AF37] mx-auto mt-6 rounded-full"></div>
           </div>
         </div>
       </section>
@@ -55,7 +55,7 @@ const ReturnsPolicy = () => {
               <li className="flex items-start gap-3">
                 <FaShippingFast className="text-[#D4AF37] mt-1 flex-shrink-0" />
                 <span>
-                  Return shipping costs are on the customer unless it's our
+                  Return shipping costs are on the customer unless it{"'"}s our
                   error
                 </span>
               </li>
@@ -95,7 +95,7 @@ const ReturnsPolicy = () => {
               <li className="flex items-start gap-3">
                 <FaShippingFast className="text-[#D4AF37] mt-1 flex-shrink-0" />
                 <span>
-                  Customer covers shipping costs unless it's our error
+                  Customer covers shipping costs unless it{"'"}s our error
                 </span>
               </li>
               <li className="flex items-start gap-3">
