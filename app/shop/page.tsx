@@ -8,7 +8,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import React, { Suspense } from "react";
 
-export async function generateMetaData(): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Shop Premium Wigs | Up to 50% Off - Perfect Strands",
     description:
