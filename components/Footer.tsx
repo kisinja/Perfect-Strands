@@ -7,14 +7,14 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0a0a0a] text-white pt-16 pb-8 border-t border-[#D4AF37]/20 px-6 md:px-12 lg:px-20 mt-12">
+    <footer className="bg-[#0a0a0a] text-white pt-16 pb-8 border-t border-[#D4AF37]/20 px-6 md:px-12 lg:px-20">
       {/* Premium Services Banner */}
       <div className="bg-gradient-to-r from-[#D4AF37]/10 to-[#D4AF37]/5 py-6 mb-12">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
           <div className="flex flex-col items-center">
             <MdOutlineLocalShipping className="text-3xl text-[#D4AF37] mb-2" />
             <h4 className="font-medium">Free Shipping</h4>
-            <p className="text-xs text-gray-400">On orders over $150</p>
+            <p className="text-xs text-gray-400">On orders over KES 40,000</p>
           </div>
           <div className="flex flex-col items-center">
             <RiCustomerService2Fill className="text-3xl text-[#D4AF37] mb-2" />
