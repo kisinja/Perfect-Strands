@@ -1,11 +1,16 @@
-import React from 'react'
+import ContactForm from '@/components/ContactForm';
+import React from 'react';
+
+export const metadata = {
+    title:"Perfect Strands | Contact Page",
+    description:"Contact Perfect Strands",
+};
 
 const Contact = () => {
-    return (
-        <section>
-            <h1 className="font-bold">Contact</h1>
-        </section>
-    )
-}
 
-export default Contact
+    return (
+            <ContactForm/>
+    );
+};
+
+export default Contact;

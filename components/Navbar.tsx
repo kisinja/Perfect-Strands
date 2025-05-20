@@ -8,6 +8,7 @@ import SearchInput from "./SearchInput";
 import CartModal from "./CartModal";
 import NavProfile from "./NavProfile";
 import { useCartStore } from "@/hooks/useCartStore";
+import Image from "next/image";
 
 const navLinks = [
     { name: 'Home', href: '/', icon: Home },
@@ -25,12 +26,18 @@ const Navbar = () => {
     const { counter } = useCartStore();
 
     return (
-        <nav className="w-full h-[65px] border-b border-gray-200 bg-white shadow-sm sticky top-0 z-50 px-6 md:px-12 lg:px-20">
+        <nav className="w-full h-[65px] border-b border-gray-200 bg-[#e1e0e3] shadow-sm sticky top-0 z-50 px-6 md:px-12 lg:px-20">
             <div className="max-w-7xl mx-auto ">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
-                    <div className="text-xl font-playfair">
-                        Perfect Strands
+                    <div className="text-xl font-playfair w-[100px] h-[60px] relative">
+                        <Image
+                            src="/logo.jpeg"
+                            alt="Logo"
+                            width={100} // Adjust the width as needed
+                            height={40} // Adjust the height as needed
+                            className="object-contain w-full h-full" // Maintains aspect ratio
+                        />
                     </div>
 
                     {/* Desktop Navigation */}

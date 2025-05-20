@@ -3,9 +3,32 @@ import CustomizeProducts from "@/components/CustomizeProducts";
 import ProductImages from "@/components/ProductImages";
 import ProductItem from "@/components/ProductItem";
 import { wixClientServer } from "@/lib/wixClientServer";
+import { Metadata } from "next";
 import React from "react";
 
 type ParamsProps = Promise<{ slug: string }>;
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: ParamsProps;
+}): Promise<Metadata> => {
+  const { slug } = await params;
+  const wixClient = await wixClientServer();
+  const res = await wixClient.products.queryProducts().eq("slug", slug).find();
+  const product = res.items[0];
+  if (!product) {
+    return {
+      title: "Product not found",
+      description: "Product not found",
+    };
+  }
+
+  return {
+    title: product?.name,
+    description: product?.description,
+  };
+};
 
 const ProductDetails = async ({ params }: { params: ParamsProps }) => {
   const { slug } = await params;
