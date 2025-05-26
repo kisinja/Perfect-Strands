@@ -108,7 +108,7 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
           <div className="relative w-full">
             <h1 className="text-4xl font-medium">{product.name}</h1>
             {product.ribbon && (
-              <div className="absolute top-2 left-2 bg-[#D4AF37] text-white text-xs font-semibold px-2 py-1 rounded z-20">
+              <div className="absolute top-2 right-2 bg-[#D4AF37] text-white text-xs font-semibold px-2 py-1 rounded z-20">
                 {product.ribbon}
               </div>
             )}
