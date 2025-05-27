@@ -111,7 +111,7 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
               <span className="absolute -top-2 text-xs bg-[#D4AF37] text-white py-1 px-3 rounded-md font-bold z-20 transform -rotate-8 shadow-md">{product.ribbon}</span>
             )}
           </div>
-          <p className="text-gray-500">{product.description}</p>
+          <div dangerouslySetInnerHTML={{ __html: product.description ?? "" }} className=" text-gray-500" />
           <div className="h-[2px] bg-gray-100" />
 
           {product.price?.price === product.price?.discountedPrice ? (
