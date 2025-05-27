@@ -45,7 +45,7 @@ const ProductItem = ({ product }: { product: products.Product }) => {
       </div>
 
       <div className="text-sm text-gray-500 line-clamp-1">
-        {product.description}
+        <div dangerouslySetInnerHTML={{ __html: product.description ?? "" }} className=" text-gray-500 text-sm" />
       </div>
       <button className="rounded-2xl ring-1 ring-[#D4AF37] text-[#D4AF37] py-2 w-max px-4 text-xs hover:bg-[#D4AF37] hover:text-white transition-colors duration-300 ease-in-out cursor-pointer">
         See Details
