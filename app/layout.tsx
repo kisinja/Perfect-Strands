@@ -6,14 +6,6 @@ import Footer from "@/components/Footer";
 import { WixClientContextProvider } from "@/context/wixContext";
 import { Toaster } from "@/components/ui/sonner";
 
-// Configure Poppins font with required weights
-/* const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-poppins',
-  display: 'swap',
-}); */
-
 export const metadata: Metadata = {
   title: "Perfect Strands",
   description: "Trend-Setting Wigs for Iconic Queens",

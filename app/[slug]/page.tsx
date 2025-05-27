@@ -105,15 +105,11 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
         </div>
 
         <div className="w-full lg:w-1/2 flex flex-col gap-6">
-          <div className="">
-            <h1 className="text-4xl font-medium relative">
-              {product.name}
-              {product.ribbon && (
-                <div className="absolute top-1 right-2 bg-[#D4AF37] text-white text-xs font-semibold px-2 py-1 rounded z-20">
-                  {product.ribbon}
-                </div>
-              )}
-            </h1>
+          <div className="text-2xl font-medium relative">
+            {product.name}
+            {product.ribbon && (
+              <span className="absolute -top-2 text-xs bg-[#D4AF37] text-white py-1 px-3 rounded-md font-bold z-20 transform -rotate-8 shadow-md">{product.ribbon}</span>
+            )}
           </div>
           <p className="text-gray-500">{product.description}</p>
           <div className="h-[2px] bg-gray-100" />
