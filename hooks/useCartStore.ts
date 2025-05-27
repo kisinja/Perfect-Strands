@@ -50,7 +50,7 @@ export const useCartStore = create<CartState>((set) => ({
 
     set({
       cart: response.cart,
-      counter: response.cart?.lineItems.length,
+      counter: response.cart?.lineItems?.length,
       isLoading: false,
     });
   },
@@ -62,7 +62,7 @@ export const useCartStore = create<CartState>((set) => ({
 
     set({
       cart: response.cart,
-      counter: response.cart?.lineItems.length,
+      counter: response.cart?.lineItems?.length,
       isLoading: false,
     });
   },
