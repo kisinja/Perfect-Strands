@@ -5,6 +5,7 @@ import ProductItem from "@/components/ProductItem";
 import { wixClientServer } from "@/lib/wixClientServer";
 import { Metadata } from "next";
 import React from "react";
+import { FaCrown, FaGem } from "react-icons/fa";
 
 type ParamsProps = Promise<{ slug: string }>;
 
@@ -20,27 +21,27 @@ export const generateMetadata = async ({
 
   if (!product) {
     return {
-      title: "Product not found",
+      title: "PRODUCT NOT FOUND | PERFECT STRANDS",
       description: "Product not found",
     };
   }
 
   return {
-    title: product.name,
+    title: `${product.name?.toUpperCase()} | PERFECT STRANDS`,
     description: product.description,
     openGraph: {
-      title: product.name || "",
+      title: `${product.name?.toUpperCase()} | PERFECT STRANDS`,
       description: product.description || "",
       type: "website",
       url: `https://perfect-strands.vercel.app/shop/${slug}`,
       images: product.media?.items?.[0]?.image?.url
         ? [{ url: product.media.items[0].image.url }]
         : [],
-      siteName: "Perfect Strands",
+      siteName: "PERFECT STRANDS",
     },
     twitter: {
       card: "summary_large_image",
-      title: product.name || "",
+      title: `${product.name?.toUpperCase()} | PERFECT STRANDS`,
       description: product.description || "",
       images: product.media?.items?.[0]?.image?.url
         ? [product.media.items[0].image.url]
@@ -61,7 +62,7 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
   const product = res.items[0];
 
   if (!product) {
-    return <h1>Product not found</h1>;
+    return <h1 className="text-2xl font-bold text-center my-20">PRODUCT NOT FOUND</h1>;
   }
 
   const relatedRes = await wixClient.products
@@ -75,7 +76,7 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
   );
 
   return (
-    <>
+    <div className="bg-[#fff0f5]/30">
       {/* Structured Data */}
       <script
         type="application/ld+json"
@@ -87,50 +88,82 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
             image: product.media?.items?.map((i) => i.image?.url),
             description: product.description,
             sku: product._id,
+            brand: {
+              "@type": "Brand",
+              name: "Perfect Strands"
+            },
             offers: {
               "@type": "Offer",
               priceCurrency: "USD",
               price: product.price?.discountedPrice ?? product.price?.price,
               availability:
                 (product.stock?.quantity ?? 0) > 0 ? "InStock" : "OutOfStock",
-              url: `https://yourdomain.com/shop/${product.slug}`,
+              url: `https://perfect-strands.vercel.app/shop/${product.slug}`,
             },
           }),
         }}
       />
 
-      <section className="flex flex-col md:flex-row gap-16 pb-6">
-        <div className="w-full lg:w-1/2 lg:sticky top-20 h-max">
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col md:flex-row gap-12">
+        {/* Product Images */}
+        <div className="w-full lg:w-1/2 lg:sticky top-8 h-max">
           <ProductImages items={product.media?.items} />
         </div>
 
-        <div className="w-full lg:w-1/2 flex flex-col gap-6">
-          <div className="text-2xl font-medium relative">
-            {product.name}
+        {/* Product Info */}
+        <div className="w-full lg:w-1/2 flex flex-col gap-8">
+          <div className="flex flex-col gap-2">
             {product.ribbon && (
-              <span className="absolute -top-2 text-xs bg-[#D4AF37] text-white py-1 px-3 rounded-md font-bold z-20 transform -rotate-8 shadow-md">{product.ribbon}</span>
+              <span className="bg-[#D4AF37] text-white text-xs font-bold py-1 px-3 rounded-full w-max uppercase tracking-wider">
+                {product.ribbon}
+              </span>
             )}
-          </div>
-          <div dangerouslySetInnerHTML={{ __html: product.description ?? "" }} className=" text-gray-500" />
-          <div className="h-[2px] bg-gray-100" />
-
-          {product.price?.price === product.price?.discountedPrice ? (
-            <h2 className="text-2xl font-medium">
-              {product.price?.formatted?.price}
-            </h2>
-          ) : (
-            <div className="flex items-center gap-4">
-              <h3 className="text-xl text-gray-500 line-through">
-                {product.price?.formatted?.price}
-              </h3>
-              <h2 className="text-2xl font-medium">
-                {product.price?.formatted?.discountedPrice}
-              </h2>
+            <h1 className="text-3xl font-bold text-[#3b1f2b]">
+              {product.name}
+            </h1>
+            <div className="flex items-center gap-2 text-[#D4AF37]">
+              <FaGem />
+              <span className="text-sm font-medium">Premium Quality</span>
             </div>
-          )}
+          </div>
 
-          <div className="h-[2px] bg-gray-100" />
+          <div
+            className="text-[#3b1f2b]/90 leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: product.description ?? "" }}
+          />
 
+          <div className="h-px bg-[#D4AF37]/20" />
+
+          {/* Pricing */}
+          <div className="flex flex-col gap-2">
+            {product.price?.price === product.price?.discountedPrice ? (
+              <div className="text-3xl font-bold text-[#3b1f2b]">
+                {product.price?.formatted?.price}
+              </div>
+            ) : (
+              <div className="flex items-center gap-4">
+                <span className="text-xl text-[#3b1f2b]/60 line-through">
+                  {product.price?.formatted?.price}
+                </span>
+                <span className="text-3xl font-bold text-[#3b1f2b]">
+                  {product.price?.formatted?.discountedPrice}
+                </span>
+              </div>
+            )}
+            <div className="text-sm text-[#3b1f2b]/70">
+              {product.stock?.quantity ? (
+                <span className="text-[#D4AF37] font-medium">
+                  {product.stock.quantity} IN STOCK
+                </span>
+              ) : (
+                <span className="text-red-500">OUT OF STOCK</span>
+              )}
+            </div>
+          </div>
+
+          <div className="h-px bg-[#D4AF37]/20" />
+
+          {/* Add to Cart */}
           {product.variants && product.productOptions ? (
             <CustomizeProducts
               productId={product._id!}
@@ -144,34 +177,52 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
               stockNumber={product.stock?.quantity || 0}
             />
           )}
-          <div className="h-[2px] bg-gray-100" />
 
+          {/* Additional Info */}
           {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           {product.additionalInfoSections?.map((section: any) => (
-            <div className="text-sm" key={section.title}>
-              <h3 className="font-medium mb-4 underline">{section.title}</h3>
-              <div dangerouslySetInnerHTML={{ __html: section.description }} />
+            <div className="mt-6" key={section.title}>
+              <h3 className="font-bold text-[#3b1f2b] mb-3 uppercase text-sm tracking-wider">
+                {section.title}
+              </h3>
+              <div
+                className="text-[#3b1f2b]/80 text-sm"
+                dangerouslySetInnerHTML={{ __html: section.description }}
+              />
             </div>
           ))}
+
+          {/* Luxury Guarantee */}
+          <div className="mt-6 p-4 border border-[#D4AF37]/30 rounded-lg bg-white">
+            <div className="flex items-center gap-3">
+              <FaCrown className="text-[#D4AF37] flex-shrink-0" />
+              <div>
+                <h4 className="font-bold text-[#3b1f2b] text-sm uppercase tracking-wider">
+                  LUXURY GUARANTEE
+                </h4>
+                <p className="text-[#3b1f2b]/70 text-sm">
+                  Handcrafted with premium materials for unmatched quality and durability
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* Related Products */}
       {relatedProducts && relatedProducts.length > 0 && (
-        <>
-          <div className="w-full h-[2px] bg-gray-100" />
-          <section>
-            <h2 className="font-semibold text-2xl my-12">
-              Related to “{product.name}”
-            </h2>
-            <div className="flex gap-x-8 gap-y-16 justify-between flex-wrap">
-              {relatedProducts.map((p) => (
-                <ProductItem key={p._id} product={p} />
-              ))}
-            </div>
-          </section>
-        </>
+        <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-[#D4AF37]/20">
+          <h2 className="font-bold text-2xl text-[#3b1f2b] mb-8 uppercase tracking-wider">
+            COMPLETE YOUR LOOK
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {relatedProducts.map((p) => (
+              <ProductItem key={p._id} product={p} />
+            ))}
+          </div>
+        </section>
       )}
-    </>
+    </div>
   );
 };
 

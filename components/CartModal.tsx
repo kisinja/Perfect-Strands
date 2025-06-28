@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import Image from "next/image";
@@ -7,6 +8,9 @@ import { useWixClient } from "@/hooks/useWixCient";
 import { formatPrice } from "@/utils";
 import { useEffect } from "react";
 import { FaSpinner } from "react-icons/fa";
+import { FiX } from "react-icons/fi";
+import Link from "next/link";
+import { Trash } from "lucide-react";
 
 const CartModal = ({ onClose }: { onClose: () => void }) => {
   const wixClient = useWixClient();
@@ -16,97 +20,98 @@ const CartModal = ({ onClose }: { onClose: () => void }) => {
     getCart(wixClient);
   }, [cart, wixClient, getCart]);
 
-  if(isLoading){
-    return <div className="text-gray-500 text-sm flex items-center"> <FaSpinner className="mr-2"/> Loading cart...</div>
+  if (isLoading) {
+    return (
+      <div className="text-[#3b1f2b] text-sm flex items-center justify-center h-20">
+        <FaSpinner className="mr-2 animate-spin text-[#D4AF37]" />
+        Loading your luxury selections...
+      </div>
+    )
   }
 
   return (
     <div className="z-50">
-      {/* Overlay on mobile only */}
+      {/* Overlay */}
       <div
-        className="md:hidden fixed inset-0 bg-black bg-opacity-40"
+        className="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm"
         onClick={onClose}
       ></div>
 
-      <div
-        className="
-        fixed md:absolute 
-        top-0 md:top-12 
-        left-0 md:left-auto 
-        right-0 
-        w-full md:w-max 
-        h-full md:h-auto 
-        bg-white 
-        p-6 md:p-4 
-        shadow-[0_3px_10px_rgb(0,0,0,0.2)] 
-        flex flex-col gap-6 
-        z-50 overflow-y-auto
-      "
-      >
-        {/* Close button on mobile */}
-        <div className="flex justify-between items-center md:hidden">
-          <h2 className="text-xl font-semibold">Shopping Cart</h2>
-          <button onClick={onClose} className="text-gray-600 text-lg">
-            ✕
+      <div className="fixed top-0 right-0 w-full sm:w-96 h-full bg-[#fff0f5] shadow-xl flex flex-col z-50 overflow-y-auto">
+        {/* Header */}
+        <div className="flex justify-between items-center p-6 border-b border-[#D4AF37]/30">
+          <h2 className="text-xl font-bold text-[#3b1f2b]">YOUR CART</h2>
+          <button
+            onClick={onClose}
+            className="text-[#3b1f2b] hover:text-[#D4AF37] transition-colors"
+          >
+            <FiX size={24} />
           </button>
         </div>
 
-        {!cart.lineItems ? (
-          <div>Cart is Empty</div>
+        {!cart.lineItems || cart.lineItems.length === 0 ? (
+          <div className="flex flex-col items-center justify-center p-8 text-center">
+            <Image
+              src="/empty-cart.svg"
+              alt="Empty cart"
+              width={120}
+              height={120}
+              className="mb-4"
+            />
+            <h3 className="text-lg font-medium text-[#3b1f2b] mb-2">
+              YOUR CART IS EMPTY
+            </h3>
+            <p className="text-sm text-[#3b1f2b]/70 mb-4">
+              Continue shopping to add premium wigs to your cart
+            </p>
+            <button
+              onClick={onClose}
+              className="bg-[#D4AF37] hover:bg-[#c5a233] text-white px-6 py-2 rounded-full font-medium"
+            >
+              SHOP NOW
+            </button>
+          </div>
         ) : (
           <>
-            <div className="hidden md:block text-xl">Shopping Cart</div>
-
-            {/* LIST */}
-            <div className="flex flex-col gap-8 max-h-[400px] overflow-y-auto">
-              {cart.lineItems.map((item) => (
-                <div className="flex gap-4" key={item._id}>
+            {/* Cart Items */}
+            <div className="flex-1 p-6 overflow-y-auto">
+              {cart.lineItems.map((item:any) => (
+                <div
+                  key={item._id}
+                  className="flex gap-4 pb-6 mb-6 border-b border-[#D4AF37]/10 last:border-0"
+                >
                   {item.image && (
-                    <Image
-                      src={wixMedia.getScaledToFillImageUrl(
-                        item.image,
-                        72,
-                        96,
-                        {}
-                      )}
-                      alt=""
-                      width={72}
-                      height={96}
-                      className="object-cover rounded-md"
-                    />
+                    <div className="relative w-20 h-24 flex-shrink-0 rounded-md overflow-hidden">
+                      <Image
+                        src={wixMedia.getScaledToFillImageUrl(item.image, 80, 96, {})}
+                        alt={item.productName?.original || "Wig"}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                   )}
-                  <div className="flex flex-col justify-between w-full">
-                    <div>
-                      <div className="flex items-center justify-between gap-8">
-                        <h3 className="font-semibold">
-                          {item.productName?.original}
-                        </h3>
-                        <div className="p-1 bg-gray-50 rounded-sm flex items-center gap-2">
-                          {item.quantity && item.quantity > 1 && (
-                            <div className="text-xs text-green-500">
-                              {item.quantity} x{" "}
-                            </div>
-                          )}
-                          {typeof item.price?.amount === "number" &&
-                            formatPrice(item.price.amount)}
-                        </div>
-                      </div>
-                      <div className="text-sm text-gray-500">
-                        {item.availability?.status}
+                  <div className="flex-1 flex flex-col gap-1">
+                    <div className="flex justify-between">
+                      <h3 className="font-medium text-[#3b1f2b]">
+                        {item.productName?.original}
+                      </h3>
+                      <div className="font-medium text-[#3b1f2b]">
+                        {typeof item.price?.amount === "number" &&
+                          formatPrice(item.price.amount * (item.quantity || 1))}
                       </div>
                     </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-500">
-                        Qty. {item.quantity}
+                    <p className="text-xs text-[#3b1f2b]/70">
+                      {item.availability?.status}
+                    </p>
+                    <div className="flex justify-between items-center mt-2">
+                      <span className="text-sm text-[#3b1f2b]/70">
+                        Qty: {item.quantity}
                       </span>
                       <span
-                        className="text-blue-500"
-                        style={{
-                          cursor: isLoading ? "not-allowed" : "pointer",
-                        }}
-                        onClick={() => removeItem(wixClient, item._id!)}
+                        onClick={() => !isLoading && removeItem(wixClient, item._id!)}
+                        className={`text-xs ${isLoading ? 'text-[#D4AF37]/50 cursor-not-allowed' : 'text-red-100 hover:text-red-400 cursor-pointer'}`}
                       >
-                        Remove
+                        <Trash size={16} className="text-red-500" />
                       </span>
                     </div>
                   </div>
@@ -114,21 +119,32 @@ const CartModal = ({ onClose }: { onClose: () => void }) => {
               ))}
             </div>
 
-            {/* BOTTOM */}
-            <div className="mt-4">
-              <p className="text-gray-500 text-sm mt-2 mb-4">
-                Shipping and taxes calculated at checkout.
+            {/* Footer */}
+            <div className="p-6 border-t border-[#D4AF37]/20 bg-white">
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-[#3b1f2b]">Subtotal</span>
+                <span className="font-bold text-[#3b1f2b]">
+                  {formatPrice(cart.lineItems.reduce((acc: number, item: any) => acc + (item.price?.amount || 0) * (item.quantity || 1), 0))}
+                </span>
+              </div>
+              <p className="text-xs text-[#3b1f2b]/50 mb-4">
+                Shipping and taxes calculated at checkout
               </p>
-              <div className="flex justify-between text-sm">
-                <button className="rounded-md py-3 px-4 ring-1 ring-gray-300">
-                  View Cart
-                </button>
-                <button
-                  className="rounded-md py-3 px-4 bg-black text-white disabled:cursor-not-allowed disabled:opacity-75"
-                  disabled={isLoading}
+              <div className="flex flex-col gap-3">
+                <Link
+                  href="/cart"
+                  className="text-center py-3 px-4 rounded-full border border-[#3b1f2b] text-[#3b1f2b] hover:bg-[#3b1f2b] hover:text-white transition-colors"
+                  onClick={onClose}
                 >
-                  Checkout
-                </button>
+                  VIEW CART
+                </Link>
+                <Link
+                  href="/checkout"
+                  className="text-center py-3 px-4 rounded-full bg-[#D4AF37] hover:bg-[#c5a233] text-white font-medium transition-colors"
+                  onClick={onClose}
+                >
+                  CHECKOUT
+                </Link>
               </div>
             </div>
           </>

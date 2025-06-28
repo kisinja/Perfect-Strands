@@ -2,69 +2,118 @@
 
 import Image from "next/image";
 import React from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Sparkle } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const HeroBanner: React.FC = () => {
   return (
-    <section className="relative w-full h-screen max-h-[90vh] overflow-hidden md:hidden">
-      {/* Background Image - Replace with your actual wig image */}
-      <Image
-        src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" // Suggested: High-res image of model wearing your premium wig
-        alt="Luxury human hair wigs from Perfect Strands"
-        fill
-        priority
-        className="object-cover object-center"
-        quality={100}
-      />
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className="relative w-full h-screen max-h-[90vh] overflow-hidden block md:hidden"
+    >
+      {/* Background Image */}
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          src="/hero-wig-premium.jpeg"
+          alt="Luxury wigs from Perfect Strands"
+          fill
+          priority
+          className="object-cover object-center scale-110"
+          quality={100}
+          sizes="100vw"
+        />
+      </div>
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+      {/* Glitter Particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute text-amber-300/80"
+            initial={{
+              x: Math.random() * 100,
+              y: Math.random() * 100,
+              opacity: 0
+            }}
+            animate={{
+              x: Math.random() * 100,
+              y: Math.random() * 100,
+              opacity: [0, 0.8, 0],
+              scale: [1, 1.5, 1]
+            }}
+            transition={{
+              duration: 3 + Math.random() * 5,
+              repeat: Infinity,
+              repeatType: "reverse",
+              delay: Math.random() * 5
+            }}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`
+            }}
+          >
+            <Sparkle size={16} />
+          </motion.div>
+        ))}
+      </div>
 
       {/* Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
-        {/* Main Headline */}
-        <h1 className="text-4xl md:text-3xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-          <span className="text-[#D4AF37] font-playfair block">
+        {/* Title */}
+        <motion.h1
+          className="text-5xl font-bold text-white mb-6 leading-tight"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <span className="text-amber-400 block text-6xl mb-4 tracking-wider font-playfair-display">
             Perfect Strands
           </span>
-          Your Signature <span className="italic">Hair</span> Awaits
-        </h1>
+          <span className="font-light text-2xl">
+            Your <span className="italic font-medium">Crown</span> Awaits
+          </span>
+        </motion.h1>
 
-        {/* Subheading */}
-        <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-8 font-light">
-          Premium 100% human hair wigs crafted for queens who demand perfection
-        </p>
+        {/* Tagline */}
+        <motion.p
+          className="text-white/90 text-xl max-w-2xl mb-10 font-light"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          Handcrafted luxury wigs for the modern queen. 100% virgin human hair, ethically sourced.
+        </motion.p>
 
-        {/* CTA Buttons */}
-        <div className="flex gap-4">
+        {/* CTA */}
+        <motion.div
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
           <Link href="/shop">
-            <button className="bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-black px-8 py-3 rounded-full font-medium transition-all transform hover:scale-105 cursor-pointer">
-              Shop Collection
+            <button className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-full font-semibold transition">
+              Discover Collection
             </button>
           </Link>
-          <Link href="/contact">
-            <button className="border-2 border-white text-white hover:bg-white/10 px-6 py-3 rounded-full font-medium transition-all ">
-              Book Consultation
-            </button>
-          </Link>
-        </div>
+        </motion.div>
 
         {/* Scroll Indicator */}
-        <Link href="#featured-products">
-          <div className="absolute bottom-8 animate-bounce">
-            <ChevronDown className="text-white h-8 w-8" strokeWidth={1.5} />
-          </div>
-        </Link>
+        <motion.div
+          className="absolute bottom-12 animate-bounce"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.2 }}
+        >
+          <ChevronDown className="text-white h-8 w-8" />
+        </motion.div>
       </div>
-
-      {/* Floating Badge */}
-      <div className="absolute top-8 right-8 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-        <span className="text-white font-medium">
-          <Link href="/shop">New Collection</Link>
-        </span>
-      </div>
-    </section>
+    </motion.section>
   );
 };
 

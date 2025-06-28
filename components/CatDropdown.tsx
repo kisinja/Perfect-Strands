@@ -8,7 +8,6 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 
 interface CatDropdownProps {
@@ -18,7 +17,7 @@ interface CatDropdownProps {
 const CatDropdown = ({ handleFilterChange }: CatDropdownProps) => {
     const wixClient = useWixClient();
     const [categories, setCategories] = useState<collections.Collection[]>([]);
-    const [selectedCategory, setSelectedCategory] = useState<string>("All Categories");
+    const [selectedCategory, setSelectedCategory] = useState<string>("SHOP BY");
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -36,37 +35,30 @@ const CatDropdown = ({ handleFilterChange }: CatDropdownProps) => {
     }, [wixClient]);
 
     const handleSelect = (slug: string, name: string) => {
-        setSelectedCategory(name);
-        handleFilterChange("cat", slug); // Pass both name and value
+        setSelectedCategory(name.toUpperCase());
+        handleFilterChange("cat", slug);
     };
 
     if (categories.length === 0) {
-        return <p className='text-xs text-gray-500'>Loading categories...</p>;
+        return <div className="h-10 w-40 bg-[#fce7f3] rounded-full animate-pulse"></div>;
     }
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button
-                    variant="outline"
-                    className="flex items-center gap-2 border-gray-200 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/30 w-full py-3 px-4 rounded-full border focus:border-[#D4AF37] "
+                <span
+                    className="flex items-center gap-2 border-[#D4AF37]/30 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50 focus:ring-2 focus:ring-[#D4AF37]/20 w-full py-3 px-6 rounded-full border text-[#3b1f2b] font-medium uppercase tracking-wider"
                 >
                     {selectedCategory}
-                    <ChevronDown className="h-4 w-4 opacity-50" />
-                </Button>
+                    <ChevronDown className="h-4 w-4 text-[#D4AF37]" />
+                </span>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 max-h-60 overflow-y-auto">
-                {/* <DropdownMenuItem
-                    onClick={() => handleSelect("", "All Categories")}
-                    className="cursor-pointer hover:bg-[#D4AF37]/10 focus:bg-[#D4AF37]/10"
-                >
-                    All Categories
-                </DropdownMenuItem> */}
+            <DropdownMenuContent className="w-56 max-h-60 overflow-y-auto bg-white border-[#D4AF37]/20 shadow-lg rounded-xl py-1">
                 {categories.map((category) => (
                     <DropdownMenuItem
                         key={category._id}
                         onClick={() => handleSelect(category.slug || "", category.name || "")}
-                        className="cursor-pointer hover:bg-[#D4AF37]/10 focus:bg-[#D4AF37]/10"
+                        className="cursor-pointer hover:bg-[#D4AF37]/10 focus:bg-[#D4AF37]/10 text-[#3b1f2b] px-4 py-2 uppercase text-sm font-medium"
                     >
                         {category.name}
                     </DropdownMenuItem>

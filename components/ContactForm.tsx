@@ -9,7 +9,8 @@ import {
   FaPhone,
   FaMapMarkerAlt,
   FaEnvelope,
-  FaCalendarAlt,
+  FaCrown,
+  FaGem
 } from "react-icons/fa";
 
 const ContactForm = () => {
@@ -54,223 +55,211 @@ const ContactForm = () => {
     }
   };
 
-  const btnText = isLoading ? "Sending..." : "Send Message";
-
   return (
-    <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
-      <div className="text-center mb-16">
-        <h1 className="text-4xl lg:text-5xl font-bold text-[#3a2e26] mb-4">
-          Get In Touch
-        </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          We&apos;d love to hear from you! Reach out with questions or feedback.
-        </p>
-        <div className="w-24 h-1 bg-[#D4AF37] mx-auto mt-6 rounded-full"></div>
-      </div>
-
-      <div className="flex flex-col lg:flex-row gap-12 w-full">
-        {/* Contact Information - Smaller Width */}
-        <div className="lg:w-2/5 space-y-8">
-          <div className="bg-[#f9f5f0] p-8 rounded-2xl shadow-sm">
-            <h2 className="text-2xl font-light text-[#3a2e26] mb-6">
-              Contact Information
-            </h2>
-
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="bg-[#D4AF37] p-3 rounded-full text-white">
-                  <FaPhone size={18} />
-                </div>
-                <div>
-                  <h3 className="font-medium text-gray-700">
-                    Phone / WhatsApp
-                  </h3>
-                  <p className="text-gray-600">+254 710669868</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="bg-[#D4AF37] p-3 rounded-full text-white">
-                  <FaEnvelope size={18} />
-                </div>
-                <div>
-                  <h3 className="font-medium text-gray-700">Email</h3>
-                  <p className="text-gray-600">Coming Soon❗❗</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="bg-[#D4AF37] p-3 rounded-full text-white">
-                  <FaMapMarkerAlt size={18} />
-                </div>
-                <div>
-                  <h3 className="font-medium text-gray-700">Address</h3>
-                  <p className="text-gray-600">
-                    Toll Estate
-                    <br />
-                    Ruiru, Kenya
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-[#f9f5f0] p-8 rounded-2xl shadow-sm">
-            <h2 className="text-2xl font-light text-[#3a2e26] mb-4">
-              Business Hours
-            </h2>
-            <ul className="space-y-3">
-              <li className="flex justify-between border-b border-[#f0e6d6] pb-2 flex-wrap gap-y-2">
-                <span className="text-gray-700 flex items-center gap-2">
-                  <FaCalendarAlt className="text-gray-600" />
-                  Weekdays
-                </span>
-                <span className="text-gray-600 font-medium">
-                  9:00 AM - 6:00 PM
-                </span>
-              </li>
-              <li className="flex justify-between border-b border-[#f0e6d6] pb-2 flex-wrap gap-y-2">
-                <span className="text-gray-700 flex items-center gap-2">
-                  <FaCalendarAlt className="text-gray-600" />
-                  Saturday
-                </span>
-                <span className="text-gray-600 font-medium">
-                  10:00 AM - 4:00 PM
-                </span>
-              </li>
-              <li className="flex justify-between">
-                <span className="text-gray-700 flex items-center gap-2">
-                  <FaCalendarAlt className="text-gray-600" />
-                  Sunday
-                </span>
-                <span className="text-gray-600 font-medium">Closed</span>
-              </li>
-            </ul>
-          </div>
+    <section className="bg-[#fff0f5]/30 py-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl lg:text-5xl font-bold text-[#3b1f2b] mb-4 uppercase tracking-wider">
+            CONTACT US
+          </h1>
+          <p className="text-lg text-[#3b1f2b]/80 max-w-2xl mx-auto">
+            We&apos;d love to hear from you! Reach out with questions or feedback.
+          </p>
+          <div className="w-24 h-1 bg-[#D4AF37] mx-auto mt-6"></div>
         </div>
 
-        {/* Contact Form - Larger Width */}
-        <div className="lg:w-3/5 bg-white p-8 rounded-2xl shadow-lg border border-[#f0e6d6] h-max">
-          <h2 className="text-2xl font-bold text-[#3a2e26] mb-6">
-            Send Us a Message
-          </h2>
+        <div className="flex flex-col lg:flex-row gap-8 w-full">
+          {/* Contact Information */}
+          <div className="lg:w-2/5 space-y-6">
+            <div className="bg-white p-8 rounded-xl border border-[#D4AF37]/20 shadow-sm">
+              <div className="flex items-center gap-3 mb-6">
+                <FaCrown className="text-[#D4AF37] text-xl" />
+                <h2 className="text-2xl font-bold text-[#3b1f2b] uppercase tracking-wider">
+                  CONTACT INFO
+                </h2>
+              </div>
 
-          {errorMessage && (
-            <div className="p-4 bg-red-50 border-l-4 border-red-500 text-red-700 rounded mb-6">
-              <p className="font-medium">{errorMessage}</p>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-[#D4AF37] p-3 rounded-full text-white flex-shrink-0">
+                    <FaPhone size={16} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#3b1f2b] text-sm uppercase tracking-wider">
+                      PHONE / WHATSAPP
+                    </h3>
+                    <p className="text-[#3b1f2b]/90">+254 710 669 868</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-[#D4AF37] p-3 rounded-full text-white flex-shrink-0">
+                    <FaEnvelope size={16} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#3b1f2b] text-sm uppercase tracking-wider">
+                      EMAIL
+                    </h3>
+                    <p className="text-[#3b1f2b]/90">Coming Soon</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-[#D4AF37] p-3 rounded-full text-white flex-shrink-0">
+                    <FaMapMarkerAlt size={16} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#3b1f2b] text-sm uppercase tracking-wider">
+                      ADDRESS
+                    </h3>
+                    <p className="text-[#3b1f2b]/90">
+                      Toll Estate<br />
+                      Ruiru, Kenya
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-          )}
 
-          {successMessage && (
-            <div className="p-4 bg-green-50 border-l-4 border-green-500 text-green-700 rounded mb-6">
-              <p className="font-medium">{successMessage}</p>
+            <div className="bg-white p-8 rounded-xl border border-[#D4AF37]/20 shadow-sm">
+              <div className="flex items-center gap-3 mb-6">
+                <FaGem className="text-[#D4AF37] text-xl" />
+                <h2 className="text-2xl font-bold text-[#3b1f2b] uppercase tracking-wider">
+                  BUSINESS HOURS
+                </h2>
+              </div>
+
+              <ul className="space-y-4">
+                <li className="flex justify-between pb-3 border-b border-[#D4AF37]/10">
+                  <span className="text-[#3b1f2b] font-medium">Weekdays</span>
+                  <span className="text-[#3b1f2b]/80">9:00 AM - 6:00 PM</span>
+                </li>
+                <li className="flex justify-between pb-3 border-b border-[#D4AF37]/10">
+                  <span className="text-[#3b1f2b] font-medium">Saturday</span>
+                  <span className="text-[#3b1f2b]/80">10:00 AM - 4:00 PM</span>
+                </li>
+                <li className="flex justify-between">
+                  <span className="text-[#3b1f2b] font-medium">Sunday</span>
+                  <span className="text-[#3b1f2b]/80">Closed</span>
+                </li>
+              </ul>
             </div>
-          )}
+          </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700 mb-1"
+          {/* Contact Form */}
+          <div className="lg:w-3/5 bg-white p-8 rounded-xl border border-[#D4AF37]/20 shadow-lg h-max">
+            <h2 className="text-2xl font-bold text-[#3b1f2b] mb-6 uppercase tracking-wider">
+              SEND US A MESSAGE
+            </h2>
+
+            {errorMessage && (
+              <div className="p-4 bg-red-50 border-l-4 border-red-500 text-red-700 rounded mb-6">
+                <p className="font-medium">{errorMessage}</p>
+              </div>
+            )}
+
+            {successMessage && (
+              <div className="p-4 bg-green-50 border-l-4 border-green-500 text-green-700 rounded mb-6">
+                <p className="font-medium">{successMessage}</p>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-bold text-[#3b1f2b] mb-2 uppercase tracking-wider"
+                >
+                  Full Name <span className="text-red-500">*</span>
+                </label>
+                <Input
+                  id="name"
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-[#D4AF37]/30 rounded-lg focus:ring-2 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37] transition bg-white"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-bold text-[#3b1f2b] mb-2 uppercase tracking-wider"
+                >
+                  Email Address <span className="text-red-500">*</span>
+                </label>
+                <Input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="your.email@example.com"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-[#D4AF37]/30 rounded-lg focus:ring-2 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37] transition bg-white"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-bold text-[#3b1f2b] mb-2 uppercase tracking-wider"
+                >
+                  Your Message <span className="text-red-500">*</span>
+                </label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  placeholder="How can we help you?"
+                  value={form.message}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-[#D4AF37]/30 rounded-lg focus:ring-2 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37] transition bg-white"
+                />
+              </div>
+
+              <Button
+                type="submit"
+                disabled={isLoading}
+                className="w-full bg-[#D4AF37] hover:bg-[#c5a233] text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 uppercase tracking-wider shadow-md hover:shadow-lg flex items-center justify-center gap-2"
               >
-                Full Name
-                <span className="inline-block text-sm text-red-600 ml-1">
-                  *
-                </span>
-              </label>
-              <Input
-                id="name"
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition"
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Email Address
-                <span className="inline-block text-sm text-red-600 ml-1">
-                  *
-                </span>
-              </label>
-              <Input
-                id="email"
-                type="email"
-                name="email"
-                placeholder="your.email@example.com"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition"
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Your Message
-                <span className="inline-block text-sm text-red-600 ml-1">
-                  *
-                </span>
-              </label>
-              <Textarea
-                id="message"
-                name="message"
-                rows={5}
-                placeholder="How can we help you?"
-                value={form.message}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition"
-              />
-            </div>
-
-            <Button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-[#D4AF37] hover:bg-[#c9a42e] text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
-            >
-              {isLoading ? (
-                <>
-                  <svg
-                    className="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                  Sending...
-                </>
-              ) : (
-                <>
-                  <FaPaperPlane />
-                  {btnText}
-                </>
-              )}
-            </Button>
-          </form>
+                {isLoading ? (
+                  <>
+                    <svg
+                      className="animate-spin h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    SENDING...
+                  </>
+                ) : (
+                  <>
+                    <FaPaperPlane />
+                    SEND MESSAGE
+                  </>
+                )}
+              </Button>
+            </form>
+          </div>
         </div>
       </div>
     </section>

@@ -7,40 +7,39 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0a0a0a] text-white pt-16 pb-8 border-t border-[#D4AF37]/20 px-6 md:px-12 lg:px-20">
+    <footer className="bg-[#fff0f5] text-[#3b1f2b] pt-12 pb-8 border-t border-[#D4AF37]/30 px-6 md:px-12 lg:px-20">
       {/* Premium Services Banner */}
-      <div className="bg-gradient-to-r from-[#D4AF37]/10 to-[#D4AF37]/5 py-6 mb-12">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+      <div className="bg-[#fce7f3] py-8 mb-12 rounded-lg">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className="flex flex-col items-center">
-            <MdOutlineLocalShipping className="text-3xl text-[#D4AF37] mb-2" />
-            <h4 className="font-medium">Free Shipping</h4>
-            <p className="text-xs text-gray-400">On orders over KES 40,000</p>
+            <MdOutlineLocalShipping className="text-3xl text-[#D4AF37] mb-3" />
+            <h4 className="font-medium text-lg">Free Shipping</h4>
+            <p className="text-sm text-[#3b1f2b]/80">On orders over $100</p>
           </div>
           <div className="flex flex-col items-center">
-            <RiCustomerService2Fill className="text-3xl text-[#D4AF37] mb-2" />
-            <h4 className="font-medium">24/7 Support</h4>
-            <p className="text-xs text-gray-400">Wig experts available</p>
+            <RiCustomerService2Fill className="text-3xl text-[#D4AF37] mb-3" />
+            <h4 className="font-medium text-lg">24/7 Support</h4>
+            <p className="text-sm text-[#3b1f2b]/80">Wig experts available</p>
           </div>
           <div className="flex flex-col items-center">
-            <MdOutlinePayment className="text-3xl text-[#D4AF37] mb-2" />
-            <h4 className="font-medium">Secure Payment</h4>
-            <p className="text-xs text-gray-400">100% protected</p>
+            <MdOutlinePayment className="text-3xl text-[#D4AF37] mb-3" />
+            <h4 className="font-medium text-lg">Secure Payment</h4>
+            <p className="text-sm text-[#3b1f2b]/80">100% protected</p>
           </div>
         </div>
       </div>
 
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
         {/* Brand Info */}
-        <div className="space-y-4">
-          <h2 className="text-3xl font-playfair text-[#D4AF37]">
+        <div className="space-y-5">
+          <h2 className="text-3xl font-bold text-[#D4AF37]">
             Perfect Strands
           </h2>
-          <p className="text-sm text-gray-300 leading-relaxed">
+          <p className="text-sm text-[#3b1f2b] leading-relaxed">
             Luxury human hair wigs crafted for queens who demand perfection.
-            Established 2023.
           </p>
-          <div className="flex space-x-4 text-lg pt-2">
+          <div className="flex space-x-5 text-xl pt-2">
             <a
               href="https://www.instagram.com/perfect_strands.ke/profilecard/?igsh=MW0ydjcxZDU5YjN4Mw=="
               target="_blank"
@@ -67,21 +66,21 @@ const Footer = () => {
 
         {/* Quick Links */}
         <div>
-          <h3 className="text-lg font-semibold mb-5 pb-2 border-b border-[#D4AF37]/30 text-[#D4AF37]">
-            Explore
+          <h3 className="text-lg font-semibold mb-6 pb-2 border-b border-[#D4AF37]/30 text-[#3b1f2b]">
+            SHOP BY
           </h3>
           <ul className="space-y-3">
             {[
-              { name: "Shop All Wigs", href: "/shop" },
-              { name: "Lace Front Wigs", href: "/shop?name=lace-front" },
-              { name: "Human Hair", href: "/shop?name=human-hair" },
-              { name: "Custom Orders", href: "/" },
-              { name: "Wig Care", href: "/" },
+              { name: "New Arrivals", href: "/new-arrivals" },
+              { name: "Best Sellers", href: "/best-sellers" },
+              { name: "On Sale", href: "/sale" },
+              { name: "Gift Ideas", href: "/gifts" },
+              { name: "All Wigs", href: "/shop" },
             ].map((item) => (
               <li key={item.name}>
                 <Link
                   href={item.href}
-                  className="text-gray-300 hover:text-[#D4AF37] transition-colors text-sm"
+                  className="text-[#3b1f2b] hover:text-[#D4AF37] transition-colors text-sm font-medium"
                 >
                   {item.name}
                 </Link>
@@ -92,8 +91,8 @@ const Footer = () => {
 
         {/* Customer Care */}
         <div>
-          <h3 className="text-lg font-semibold mb-5 pb-2 border-b border-[#D4AF37]/30 text-[#D4AF37]">
-            Customer Care
+          <h3 className="text-lg font-semibold mb-6 pb-2 border-b border-[#D4AF37]/30 text-[#3b1f2b]">
+            CUSTOMER CARE
           </h3>
           <ul className="space-y-3">
             {[
@@ -106,7 +105,7 @@ const Footer = () => {
               <li key={item.name}>
                 <Link
                   href={item.href}
-                  className="text-gray-300 hover:text-[#D4AF37] transition-colors text-sm"
+                  className="text-[#3b1f2b] hover:text-[#D4AF37] transition-colors text-sm font-medium"
                 >
                   {item.name}
                 </Link>
@@ -115,75 +114,73 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="flex flex-col gap-3">
-          {/* Newsletter */}
+        {/* Newsletter & Payment */}
+        <div className="space-y-6">
           <div>
-            <h3 className="text-lg font-semibold mb-5 pb-2 border-b border-[#D4AF37]/30 text-[#D4AF37]">
-              Get Updates
+            <h3 className="text-lg font-semibold mb-6 pb-2 border-b border-[#D4AF37]/30 text-[#3b1f2b]">
+              GET UPDATES
             </h3>
-            <p className="text-gray-300 text-sm mb-4">
-              Subscribe for exclusive offers, styling tips, and new arrivals.
+            <p className="text-[#3b1f2b] text-sm mb-4">
+              Subscribe for exclusive offers and new arrivals.
             </p>
             <form className="space-y-3">
               <input
                 type="email"
                 placeholder="Your email address"
-                className="w-full px-4 py-2 bg-[#1a1a1a] border border-[#333] rounded-sm text-sm focus:outline-none focus:border-[#D4AF37]"
+                className="w-full px-4 py-2 bg-white border border-[#D4AF37]/30 rounded-sm text-sm focus:outline-none focus:border-[#D4AF37]"
               />
               <button
                 type="submit"
-                className="w-full bg-[#D4AF37] hover:bg-[#c5a233] text-black font-medium py-2 px-4 rounded-sm text-sm transition-colors"
+                className="w-full bg-[#D4AF37] hover:bg-[#c5a233] text-white font-medium py-2 px-4 rounded-sm text-sm transition-colors uppercase tracking-wider"
               >
                 Subscribe
               </button>
             </form>
           </div>
 
-          <div className="flex flex-col  justify-between gap-6">
-            <div className="flex flex-col gap-2">
-              <h3 className="text-xs font-semibold text-[#D4AF37] mb-3 flex items-center">
-                <FaShieldAlt className="mr-2" size={22} />
-                SECURE PAYMENTS
-              </h3>
-              <div className="relative w-full max-w-[180px]">
-                <Image
-                  src="/mpesaLogo.png"
-                  alt="MPESA Payment"
-                  width={180} // Intrinsic width of the image
-                  height={80} // Intrinsic height of the image
-                  className="object-contain w-full h-auto" // Maintains aspect ratio
-                  priority
-                />
-              </div>
+          <div className="flex flex-col gap-3">
+            <h3 className="text-xs font-semibold text-[#3b1f2b] mb-1 flex items-center">
+              <FaShieldAlt className="mr-2" size={18} />
+              SECURE PAYMENTS
+            </h3>
+            <div className="relative w-full max-w-[200px]">
+              <Image
+                src="/mpesaLogo.png"
+                alt="MPESA Payment"
+                width={200}
+                height={80}
+                className="object-contain w-full h-auto"
+                priority
+              />
             </div>
           </div>
         </div>
       </div>
 
       {/* Copyright */}
-      <div className="max-w-7xl mx-auto px-6 mt-8 pt-6 border-t border-[#333] text-center">
-        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 space-y-2 md:space-y-0">
+      <div className="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-[#D4AF37]/30 text-center">
+        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-[#3b1f2b]/80 space-y-2 md:space-y-0">
           <div>
-            © {new Date().getFullYear()} Perfect Strands, by{" "}
-            <span className="underline hover:text-[#D4AF37]">
-              <a href="https://instagram.com/404elvisnotfound" target="_blank">
-                lvs.gk
-              </a>
-            </span>{" "}
-            All rights reserved.
+            © {new Date().getFullYear()} Perfect Strands. All rights reserved.
           </div>
           <div className="flex space-x-4">
             <Link
               href="/terms"
               className="hover:text-[#D4AF37] transition-colors"
             >
-              Terms of Service
+              Terms
             </Link>
             <Link
               href="/privacy"
               className="hover:text-[#D4AF37] transition-colors"
             >
-              Privacy Policy
+              Privacy
+            </Link>
+            <Link
+              href="/contact"
+              className="hover:text-[#D4AF37] transition-colors"
+            >
+              Contact
             </Link>
           </div>
         </div>

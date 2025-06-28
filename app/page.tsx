@@ -44,15 +44,16 @@ export async function generateMetadata() {
 const Homepage = async () => {
   return (
     <main>
+
       {/* Hero Banner & Slider */}
       <Slider />
       <HeroBanner />
 
-      {/* Featured Products */}
       <section className="mt-24 px-4 md:px-12" id="featured-products">
-        <h2 className="mb-12 text-2xl font-light text-gray-700 tracking-wide">
+        <h2 className="mb-12 text-3xl font-light text-[#D4AF37] tracking-wide font-playfair">
           Featured Wigs & Hair Extensions
         </h2>
+
         <Suspense fallback={<ProductsListSkeleton />}>
           <ProductList
             categoryId={process.env.FEATURED_PRODUCTS_CATEGORY_ID!}
@@ -63,14 +64,16 @@ const Homepage = async () => {
       </section>
 
       {/* Product Categories */}
-      <div className="mt-24 " id="categories">
-        <h2 className="mb-12 text-2xl font-light text-gray-700 tracking-wide px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-64">
+      <div className="mt-24" id="categories">
+        <h2 className="mb-12 text-3xl font-light text-[#D4AF37] tracking-wide font-playfair px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-64">
           Wig Categories
         </h2>
+
         <Suspense fallback={<CategoriesListSkeleton />}>
           <CategoryList />
         </Suspense>
       </div>
+
 
       {/* Optional: Structured Data Script */}
       <script

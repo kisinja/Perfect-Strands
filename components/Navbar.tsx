@@ -20,24 +20,25 @@ const navLinks = [
 const Navbar = () => {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false); // Replace with actual cart state
-  const softGold = "#D4AF37";
-
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const { counter } = useCartStore();
 
+  const softGold = "#D4AF37";
+  //const lightPink = "#fff0f5";
+
   return (
-    <nav className="w-full h-[65px] border-b border-gray-200 bg-[#e1e0e3] shadow-sm sticky top-0 z-50 px-6 md:px-12 lg:px-20">
-      <div className="max-w-7xl mx-auto ">
+    <nav className="w-full h-[65px] border-b border-pink-200 bg-[lightPink] shadow-sm sticky top-0 z-50 px-6 md:px-12 lg:px-20">
+      <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/">
-            <div className="text-xl font-playfair w-[100px] h-[60px] relative">
+            <div className="w-[100px] h-[60px] relative">
               <Image
                 src="/logo.jpeg"
                 alt="Logo"
-                width={100} // Adjust the width as needed
-                height={40} // Adjust the height as needed
-                className="object-contain w-full h-full" // Maintains aspect ratio
+                width={100}
+                height={40}
+                className="object-contain w-full h-full"
               />
             </div>
           </Link>
@@ -51,17 +52,15 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-sm flex items-center gap-1 pb-1 transition-all duration-200 ${
-                    isActive
+                  className={`text-sm flex items-center gap-1 pb-1 font-medium transition-all duration-200 ${isActive
                       ? "border-b-2"
-                      : "border-b-2 border-transparent hover:border-b-2"
-                  } font-medium`}
+                      : "border-b-2 border-transparent hover:border-pink-300"
+                    }`}
                   style={{
                     borderColor: isActive ? softGold : "transparent",
-                    color: isActive ? softGold : "#333",
+                    color: isActive ? "#ffff" : "#3b1f2b",
                   }}
                 >
-                  {/* <Icon size={18} className="mr-1" /> */}
                   {link.name}
                 </Link>
               );
@@ -75,17 +74,15 @@ const Navbar = () => {
             </div>
 
             <div className="flex items-center space-x-4">
-              {/* Profile Icon */}
               <NavProfile />
 
               <div className="relative">
-                <div className="relative p-2 rounded-full hover:bg-gray-100 transition-colors cursor-pointer active:bg-white">
-                  <ShoppingBag
-                    size={22}
-                    style={{ color: softGold }}
-                    onClick={() => setIsCartOpen(!isCartOpen)}
-                  />
-                  <span className="absolute -top-1 -right-1 bg-red-400 flex items-center justify-center text-white text-xs font-bold rounded-full h-5 w-5 ">
+                <div
+                  className="relative p-2 rounded-full hover:bg-pink-100 transition-colors cursor-pointer"
+                  onClick={() => setIsCartOpen(!isCartOpen)}
+                >
+                  <ShoppingBag size={22} style={{ color: softGold }} />
+                  <span className="absolute -top-1 -right-1 bg-red-400 flex items-center justify-center text-white text-xs font-bold rounded-full h-5 w-5">
                     {counter}
                   </span>
                 </div>
@@ -109,11 +106,11 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg">
+        <div className="md:hidden bg-[#fff0f5] shadow-lg">
           <div className="px-4 py-3">
             <SearchInput />
           </div>
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <div className="px-2 pt-2 pb-3 space-y-1">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               const Icon = link.icon;
@@ -122,12 +119,10 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`flex items-center px-3 py-2 text-base font-medium rounded-md ${
-                    isActive ? "bg-opacity-10" : "hover:bg-opacity-5"
-                  }`}
+                  className="flex items-center px-3 py-2 text-base font-medium rounded-md"
                   style={{
-                    backgroundColor: isActive ? `${softGold}20` : "transparent",
-                    color: isActive ? softGold : "#333",
+                    backgroundColor: isActive ? "#fce7f3" : "transparent",
+                    color: isActive ? softGold : "#3b1f2b",
                   }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
