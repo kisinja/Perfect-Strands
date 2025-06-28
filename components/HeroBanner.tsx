@@ -34,7 +34,7 @@ const HeroBanner: React.FC = () => {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute text-amber-300/80"
+            className="absolute text-[lightPink]/80"
             initial={{
               x: Math.random() * 100,
               y: Math.random() * 100,
@@ -71,7 +71,7 @@ const HeroBanner: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-amber-400 block text-6xl mb-4 tracking-wider font-playfair-display">
+          <span className="text-[lightPink] block text-6xl mb-4 tracking-wider font-playfair-display">
             Perfect Strands
           </span>
           <span className="font-light text-2xl">
@@ -97,7 +97,7 @@ const HeroBanner: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           <Link href="/shop">
-            <button className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-full font-semibold transition">
+            <button className="bg-[lightPink] hover:bg-[lightPink]/80 text-white px-6 py-3 rounded-full font-semibold transition">
               Discover Collection
             </button>
           </Link>
