@@ -23,7 +23,6 @@ const Navbar = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { counter } = useCartStore();
 
-  const softGold = "#D4AF37";
   //const lightPink = "#fff0f5";
 
   return (
@@ -53,11 +52,11 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   className={`text-sm flex items-center gap-1 pb-1 font-medium transition-all duration-200 ${isActive
-                      ? "border-b-2"
-                      : "border-b-2 border-transparent hover:border-pink-300"
+                    ? "border-b-2"
+                    : "border-b-2 border-[#fff0f5] hover:border-pink-300"
                     }`}
                   style={{
-                    borderColor: isActive ? softGold : "transparent",
+                    borderColor: isActive ? "#fff0f5" : "transparent",
                     color: isActive ? "#ffff" : "#3b1f2b",
                   }}
                 >
@@ -78,10 +77,10 @@ const Navbar = () => {
 
               <div className="relative">
                 <div
-                  className="relative p-2 rounded-full hover:bg-pink-100 transition-colors cursor-pointer"
+                  className="relative p-2 rounded-full hover:bg-[#fff0f5] transition-colors cursor-pointer text-[#fff0f7]"
                   onClick={() => setIsCartOpen(!isCartOpen)}
                 >
-                  <ShoppingBag size={22} style={{ color: softGold }} />
+                  <ShoppingBag size={22} />
                   <span className="absolute -top-1 -right-1 bg-red-400 flex items-center justify-center text-white text-xs font-bold rounded-full h-5 w-5">
                     {counter}
                   </span>
@@ -122,7 +121,7 @@ const Navbar = () => {
                   className="flex items-center px-3 py-2 text-base font-medium rounded-md"
                   style={{
                     backgroundColor: isActive ? "#fce7f3" : "transparent",
-                    color: isActive ? softGold : "#3b1f2b",
+                    color: isActive ? "#fff0f5" : "#3b1f2b",
                   }}
                   onClick={() => setMobileMenuOpen(false)}
                 >

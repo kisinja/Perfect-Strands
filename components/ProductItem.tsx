@@ -11,7 +11,7 @@ const ProductItem = ({ product }: { product: products.Product }) => {
     >
       {/* Optional ribbon badge */}
       {product.ribbon && (
-        <div className="absolute top-2 left-2 bg-[#D4AF37] text-white text-xs font-semibold px-2 py-1 rounded z-20">
+        <div className="absolute top-2 left-2 bg-[lightPink] text-white text-xs font-semibold px-2 py-1 rounded z-20">
           {product.ribbon}
         </div>
       )}
@@ -53,10 +53,10 @@ const ProductItem = ({ product }: { product: products.Product }) => {
 
       {/* Product Name & Price */}
       <div className="flex justify-between items-center">
-        <span className="font-semibold text-gray-800 text-sm line-clamp-1">
+        <span className="font-semibold text-gray-700 text-sm line-clamp-1">
           {product.name}
         </span>
-        <span className="font-semibold text-[#D4AF37] text-sm">
+        <span className="font-semibold text-gray-500 text-sm">
           {product.priceData?.formatted?.price}
         </span>
       </div>
@@ -72,7 +72,7 @@ const ProductItem = ({ product }: { product: products.Product }) => {
       </div>
 
       {/* CTA Button */}
-      <button className="rounded-full ring-1 ring-[#D4AF37] text-white py-2 px-4 text-xs mt-2 hover:bg-[lightPink]/80 hover:text-white transition-all duration-300 ease-in-out w-max group-hover:bg-[lightPink] group-hover:text-white bg-[lightPink]">
+      <button className="rounded-full text-white py-2 px-4 text-xs mt-2 hover:bg-[lightPink]/80 hover:text-white transition-all duration-300 ease-in-out w-max group-hover:bg-[lightPink] group-hover:text-white bg-[lightPink] ">
         See Details
       </button>
     </Link>
