@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={` scroll-smooth`}>
-      <body className="font-sans bg-white antialiased">
+      <body className="font-sans  antialiased">
         <WixClientContextProvider>
           <div className="min-h-screen flex flex-col">
             <Navbar />
