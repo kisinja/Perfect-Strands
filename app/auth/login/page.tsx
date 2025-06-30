@@ -175,7 +175,7 @@ const Login = () => {
       <div className="relative z-10 flex items-center justify-center min-h-screen p-4">
         <div className="w-full max-w-6xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-amber-100 flex flex-col md:flex-row">
           {/* Left side - Branding */}
-          <div className="md:w-1/2 bg-gradient-to-br from-amber-400 to-pink-400 p-8 flex flex-col justify-center items-center text-center text-white relative overflow-hidden">
+          <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-amber-400 to-pink-400 p-8 flex-col justify-center items-center text-center text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-[url('/wig-pattern.png')] bg-cover opacity-10"></div>
             <div className="relative z-10">
               <h1 className="text-4xl font-bold mb-2">PERFECT STRANDS</h1>
@@ -200,7 +200,7 @@ const Login = () => {
           </div>
 
           {/* Right side - Form */}
-          <div className="md:w-1/2 p-10">
+          <div className="w-full md:w-1/2 p-10">
             <div className="text-center mb-8">
               <h1 className="text-3xl font-bold text-gray-800">{formTitle}</h1>
               <p className="text-gray-600 mt-2">{formSubtitle}</p>

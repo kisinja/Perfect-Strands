@@ -51,13 +51,9 @@ const CartModal = ({ onClose }: { onClose: () => void }) => {
 
         {!cart.lineItems || cart.lineItems.length === 0 ? (
           <div className="flex flex-col items-center justify-center p-8 text-center">
-            <Image
-              src="/empty-cart.svg"
-              alt="Empty cart"
-              width={120}
-              height={120}
-              className="mb-4"
-            />
+            <div>
+              <Image src="/emptyCart.svg" alt="Empty cart" width={200} height={180} />
+            </div>
             <h3 className="text-lg font-medium text-[#3b1f2b] mb-2">
               YOUR CART IS EMPTY
             </h3>
@@ -75,7 +71,7 @@ const CartModal = ({ onClose }: { onClose: () => void }) => {
           <>
             {/* Cart Items */}
             <div className="flex-1 p-6 overflow-y-auto">
-              {cart.lineItems.map((item:any) => (
+              {cart.lineItems.map((item: any) => (
                 <div
                   key={item._id}
                   className="flex gap-4 pb-6 mb-6 border-b border-[#D4AF37]/10 last:border-0"

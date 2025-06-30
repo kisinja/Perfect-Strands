@@ -211,7 +211,7 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
           <h2 className="font-bold text-2xl text-[#3b1f2b] mb-8 uppercase tracking-wider">
             COMPLETE YOUR LOOK
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="flex gap-8 flex-wrap">
             {relatedProducts.map((p) => (
               <ProductItem key={p._id} product={p} />
             ))}
