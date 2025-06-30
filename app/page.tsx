@@ -4,7 +4,7 @@ import HeroBanner from "@/components/HeroBanner";
 import ProductList from "@/components/ProductList";
 import CategoryList from "@/components/CategoryList";
 import { Suspense } from "react";
-import { Slider } from "@/components/Slider";
+import {Slider} from "@/components/Slider";
 import ProductsListSkeleton from "@/components/ProductsListSkeleton";
 import CategoriesListSkeleton from "@/components/CategoriesListSkeleton";
 

@@ -72,7 +72,7 @@ const ProductItem = ({ product }: { product: products.Product }) => {
       </div>
 
       {/* CTA Button */}
-      <button className="rounded-full text-white py-2 px-4 text-xs mt-2 hover:bg-[lightPink]/80 hover:text-white transition-all duration-300 ease-in-out w-max group-hover:bg-[lightPink] group-hover:text-white bg-[lightPink] ">
+      <button className="rounded-full text-white py-2 px-4 text-xs mt-2 hover:bg-[lightPink]/80 hover:text-white transition-all duration-300 ease-in-out w-max group-hover:bg-[lightPink] group-hover:text-white bg-[lightPink] active:bg-white active:text-black active:border-2 active:border-[lightPink]">
         See Details
       </button>
     </Link>

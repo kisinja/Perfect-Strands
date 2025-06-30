@@ -13,6 +13,7 @@ import Link from "next/link";
 import { useWixClient } from "@/hooks/useWixCient";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import { toast } from "sonner";
 
 const NavProfile = () => {
     const wixClient = useWixClient();
@@ -28,6 +29,7 @@ const NavProfile = () => {
             Cookies.remove("refreshToken");
             const { logoutUrl } = await wixClient.auth.logout(window.location.href);
             setIsProfileOpen(false);
+            toast.success("Logged out successfully");
             router.push(logoutUrl);
         } catch (error) {
             console.log(error);
@@ -40,6 +42,7 @@ const NavProfile = () => {
         if (isLoggedIn) {
             setIsProfileOpen(!isProfileOpen);
         } else {
+            toast.info("Please login to continue");
             router.push("/auth/login");
         }
     };

@@ -3,6 +3,7 @@ import { useCartStore } from "@/hooks/useCartStore";
 import { useWixClient } from "@/hooks/useWixCient";
 import { useState } from "react";
 import { FiPlus, FiMinus } from "react-icons/fi";
+import { toast } from "sonner";
 
 const Add = ({
   productId,
@@ -91,7 +92,7 @@ const Add = ({
             ? 'bg-[#D4AF37]/50 text-white cursor-not-allowed'
             : 'bg-[#D4AF37] hover:bg-[#c5a233] text-white shadow-md hover:shadow-lg'
             }`}
-          onClick={() => addItem(wixClient, productId, variantId, quantity)}
+          onClick={() => { addItem(wixClient, productId, variantId, quantity); toast.success("Item added to cart"); }}
           disabled={isLoading || stockNumber < 1}
         >
           {isLoading ? (

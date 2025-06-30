@@ -1,10 +1,12 @@
 "use client";
-import { slides } from "@/utils";
+
+
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkle, ChevronRight, ChevronLeft } from "lucide-react";
+import { slides } from "@/utils";
 
 export const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

@@ -9,15 +9,20 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
+import { useSearchParams } from 'next/navigation';
 
 interface CatDropdownProps {
     handleFilterChange: (name: string, value: string) => void;
 }
 
 const CatDropdown = ({ handleFilterChange }: CatDropdownProps) => {
+    // get the selected category from the url
+    const searchParams = useSearchParams();
+    const searchedCategory = searchParams.get("cat") || "Shop By";
     const wixClient = useWixClient();
     const [categories, setCategories] = useState<collections.Collection[]>([]);
-    const [selectedCategory, setSelectedCategory] = useState<string>("SHOP BY");
+    const [selectedCategory, setSelectedCategory] = useState(searchedCategory);
+
 
     useEffect(() => {
         const fetchCategories = async () => {

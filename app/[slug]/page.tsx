@@ -5,7 +5,7 @@ import ProductItem from "@/components/ProductItem";
 import { wixClientServer } from "@/lib/wixClientServer";
 import { Metadata } from "next";
 import React from "react";
-import { FaCrown, FaGem } from "react-icons/fa";
+import { FaCrown } from "react-icons/fa";
 
 type ParamsProps = Promise<{ slug: string }>;
 
@@ -114,17 +114,13 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
         <div className="w-full lg:w-1/2 flex flex-col gap-8">
           <div className="flex flex-col gap-2">
             {product.ribbon && (
-              <span className="bg-[#D4AF37] text-white text-xs font-bold py-1 px-3 rounded-full w-max uppercase tracking-wider">
+              <span className="bg-gradient-to-b from-amber-600 to-pink-600 text-white text-xs font-bold py-1 px-3 rounded-full w-max uppercase tracking-wider">
                 {product.ribbon}
               </span>
             )}
             <h1 className="text-3xl font-bold text-[#3b1f2b]">
               {product.name}
             </h1>
-            <div className="flex items-center gap-2 text-[#D4AF37]">
-              <FaGem />
-              <span className="text-sm font-medium">Premium Quality</span>
-            </div>
           </div>
 
           <div

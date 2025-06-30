@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import ProductItem from "./ProductItem";
 import { wixClientServer } from "@/lib/wixClientServer";
@@ -11,11 +12,11 @@ const ProductList = async ({
   searchParams,
   type,
 }: {
-  categoryId: string;
+  categoryId?: string;
   limit?: number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   searchParams?: any;
   type?: string;
+  relatedProducts?: any[];
 }) => {
   const wixClient = await wixClientServer();
   const productQuery = await wixClient.products
@@ -24,7 +25,7 @@ const ProductList = async ({
       "name",
       (searchParams?.name && searchParams?.name.toLowerCase()) || ""
     )
-    .in("collectionIds", categoryId)
+    .in("collectionIds", categoryId || [])
     .hasSome(
       "productType",
       searchParams?.type ? [searchParams.type] : ["physical", "digital"]
@@ -56,7 +57,7 @@ const ProductList = async ({
   const products = res.items;
 
   return (
-    <div className="flex gap-x-8 gap-y-16 justify-between flex-wrap">
+    <div className="flex gap-x-8 gap-y-16 justify-between flex-wrap" id="shop">
       {products.map((product) => (
         <ProductItem key={product._id} product={product} />
       ))}
