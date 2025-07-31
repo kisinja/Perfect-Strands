@@ -62,7 +62,11 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
   const product = res.items[0];
 
   if (!product) {
-    return <h1 className="text-2xl font-bold text-center my-20">PRODUCT NOT FOUND</h1>;
+    return (
+      <h1 className="text-2xl font-bold text-center my-20">
+        PRODUCT NOT FOUND
+      </h1>
+    );
   }
 
   const relatedRes = await wixClient.products
@@ -90,7 +94,7 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
             sku: product._id,
             brand: {
               "@type": "Brand",
-              name: "Perfect Strands"
+              name: "Perfect Strands",
             },
             offers: {
               "@type": "Offer",
@@ -107,7 +111,7 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col md:flex-row gap-12">
         {/* Product Images */}
         <div className="w-full lg:w-1/2 lg:sticky top-8 h-max">
-          <ProductImages items={product.media?.items} />
+          <ProductImages items={product.media?.items || []} />
         </div>
 
         {/* Product Info */}
@@ -197,7 +201,8 @@ const ProductDetails = async ({ params }: { params: ParamsProps }) => {
                   LUXURY GUARANTEE
                 </h4>
                 <p className="text-[#3b1f2b]/70 text-sm">
-                  Handcrafted with premium materials for unmatched quality and durability
+                  Handcrafted with premium materials for unmatched quality and
+                  durability
                 </p>
               </div>
             </div>

@@ -1,33 +1,29 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import Image from "next/image";
 import { useState } from "react";
 import { ZoomIn } from "lucide-react";
 
-interface RawImage {
-  image: { url: string; width: number; height: number };
-  thumbnail: { url: string; width: number; height: number };
-  title: string;
-  _id: string;
-  mediaType: string;
-}
 
-interface ProductsImagesProps {
-  items: RawImage[];
-}
-
-const ProductsImages = ({ items }: ProductsImagesProps) => {
+const ProductsImages = ({ items }: {items:any[]}) => {
   const [index, setIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
   // Convert to the format we need
-  const formattedItems = items.map((item) => ({
-    url: item.image.url,
-    alt: item.title || "Product image",
-    thumbUrl: item.thumbnail.url,
-  }));
+  const formattedItems = items
+    .filter((item) => item.image?.url && item.thumbnail?.url)
+    .map((item) => ({
+      url: item.image!.url,
+      alt: item.title || "Product image",
+      thumbUrl: item.thumbnail!.url,
+    }));
 
   if (!formattedItems.length) {
-    return <div className="text-center text-gray-400">No images available</div>;
+    return (
+      <div className="relative h-[500px] w-full rounded-lg bg-gray-100 flex items-center justify-center">
+        <div className="text-center text-gray-400">No images available</div>
+      </div>
+    );
   }
 
   return (
