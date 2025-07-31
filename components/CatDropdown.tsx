@@ -18,7 +18,7 @@ interface CatDropdownProps {
 const CatDropdown = ({ handleFilterChange }: CatDropdownProps) => {
     // get the selected category from the url
     const searchParams = useSearchParams();
-    const searchedCategory = searchParams.get("cat") || "Shop By";
+    const searchedCategory = searchParams.get("cat") || "Pick a Category";
     const wixClient = useWixClient();
     const [categories, setCategories] = useState<collections.Collection[]>([]);
     const [selectedCategory, setSelectedCategory] = useState(searchedCategory);
@@ -52,7 +52,7 @@ const CatDropdown = ({ handleFilterChange }: CatDropdownProps) => {
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <span
-                    className="flex items-center gap-2 border-[#D4AF37]/30 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50 focus:ring-2 focus:ring-[#D4AF37]/20 w-full py-3 px-6 rounded-full border text-[#3b1f2b] font-medium uppercase tracking-wider"
+                    className="flex items-center gap-2 border-[#D4AF37]/30 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50 focus:ring-2 focus:ring-[#D4AF37]/20 w-full py-3 px-6 rounded-full border text-[#3b1f2b] font-medium tracking-wider"
                 >
                     {selectedCategory}
                     <ChevronDown className="h-4 w-4 text-[#D4AF37]" />

@@ -4,7 +4,7 @@ import HeroBanner from "@/components/HeroBanner";
 import ProductList from "@/components/ProductList";
 import CategoryList from "@/components/CategoryList";
 import { Suspense } from "react";
-import {Slider} from "@/components/Slider";
+import { PromoGrid } from "@/components/Slider";
 import ProductsListSkeleton from "@/components/ProductsListSkeleton";
 import CategoriesListSkeleton from "@/components/CategoriesListSkeleton";
 
@@ -21,10 +21,11 @@ export async function generateMetadata() {
       "online wig store",
       "buy wigs Kenya",
       "affordable wigs",
-      "premium wigs"
+      "premium wigs",
     ],
     openGraph: {
-      title: "Premium Wigs & Hair Extensions | Trend-Setting Wigs for Iconic Queens",
+      title:
+        "Premium Wigs & Hair Extensions | Trend-Setting Wigs for Iconic Queens",
       description:
         "Perfect Strands is an online based go-to shop for affordable and high-quality wigs. We offer a wide selection of human, semi-human, and synthetic wigs to fit every style and budget. From stylish headband wigs starting at Ksh 2500 to premium human hair options",
       url: "https://perfect-strands.vercel.app",
@@ -44,9 +45,8 @@ export async function generateMetadata() {
 const Homepage = async () => {
   return (
     <main>
-
       {/* Hero Banner & Slider */}
-      <Slider />
+      <PromoGrid />
       <HeroBanner />
 
       <section className="mt-24 px-4 md:px-12" id="featured-products">
@@ -74,7 +74,6 @@ const Homepage = async () => {
         </Suspense>
       </div>
 
-
       {/* Optional: Structured Data Script */}
       <script
         type="application/ld+json"
@@ -89,8 +88,8 @@ const Homepage = async () => {
             image: "https://perfect-strands.vercel.app/logo.jpeg",
             sameAs: [
               "https://www.tiktok.com/@perfect_strands.ke?_t=ZM-8vvODE3yeZR&_r=1",
-              "https://www.instagram.com/perfect_strands.ke/profilecard/?igsh=MW0ydjcxZDU5YjN4Mw=="
-            ]
+              "https://www.instagram.com/perfect_strands.ke/profilecard/?igsh=MW0ydjcxZDU5YjN4Mw==",
+            ],
           }),
         }}
       />
