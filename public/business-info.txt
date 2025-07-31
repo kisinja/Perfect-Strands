@@ -1,4 +1,11 @@
-Perfect Strands is a luxury hair and beauty brand...
-Our services include: Hair styling, braiding, wig making...
-Our prices range from $X to $Y...
-We are located in Nairobi, Kenya...
+Perfect Strands is a premier online store specializing in trend-setting wigs and hair extensions designed for iconic queens. We offer a wide selection of high-quality wigs including human hair wigs, lace front wigs, semi-human wigs, and synthetic wigs, tailored for every style and occasion.
+
+Our products range from stylish headband wigs starting at Ksh 2500 to premium human hair options, ensuring options for every budget. We pride ourselves on offering affordable yet premium wigs that help our customers express their unique beauty and confidence.
+
+As an online-based store, our inventory is managed via a Wix headless CMS, ensuring up-to-date product availability and details.
+
+Customers can shop easily from our website at https://perfect-strands.vercel.app and enjoy exclusive discounts on top-quality hair products.
+
+For inquiries or support, please contact us via email at support@perfect-strands.co.ke or call +254 700 000 000.
+
+We are committed to helping you find the perfect wig to enhance your style and confidence.
