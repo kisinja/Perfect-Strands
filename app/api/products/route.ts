@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // app/api/products/route.ts
 
 import { wixClientServer } from "@/lib/wixClientServer";
