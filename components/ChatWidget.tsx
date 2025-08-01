@@ -130,7 +130,6 @@ const ChatWidget = () => {
       >
         <div className="flex items-center">
           <MessageSquare className="mr-2" />
-          <h3 className="font-bold">Wig Stylist Chat</h3>
         </div>
         <div className="flex items-center">
           <Sparkles className="mr-2 text-white/80" size={16} />
@@ -233,9 +232,6 @@ const ChatWidget = () => {
             <Send size={18} />
           </button>
         </div>
-        <p className="text-xs text-center text-gray-400 mt-2">
-          Our virtual stylist is here to help with all your wig questions!
-        </p>
       </div>
     </div>
   );
