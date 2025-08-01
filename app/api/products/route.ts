@@ -19,6 +19,9 @@ export async function GET() {
       productLink: item.slug
         ? `https://perfect-strands.vercel.app/${item.slug}`
         : null,
+      createdAt: new Date(item._createdDate || "").toISOString(),
+      imageUrl: item.media?.mainMedia?.image?.url ?? "/placeholder-product.jpg",
+      ribbon: item.ribbon || null,
     }));
 
     return NextResponse.json(simplifiedProducts, { status: 200 });

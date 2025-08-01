@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useEffect, useState, useRef } from "react";
 import { Send, MessageSquare, Sparkles, ChevronDown } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import Image from "next/image";
 
 function generateSessionId(length = 12) {
   const chars =
@@ -153,7 +155,21 @@ const ChatWidget = () => {
                   : "bg-white text-[#3b1f2b] rounded-bl-none border border-[#f3e8f1]"
               }`}
             >
-              <ReactMarkdown>{msg.text}</ReactMarkdown>
+              <ReactMarkdown
+                components={{
+                  img: ({ node, ...props }) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      {...props}
+                      src={(props.src as string) || "/placeholder-product.jpg"}
+                      className="my-2 rounded-xl border border-gray-200 max-w-full h-auto"
+                      alt="Product image"
+                    />
+                  ),
+                }}
+              >
+                {msg.text}
+              </ReactMarkdown>
             </div>
             <span className="text-xs text-gray-400 mt-1">
               {msg.timestamp.toLocaleTimeString([], {
