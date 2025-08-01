@@ -2,19 +2,24 @@
 // app/api/products/route.ts
 
 import { wixClientServer } from "@/lib/wixClientServer";
+import { products as wixProducts } from "@wix/stores";
 import { NextResponse } from "next/server";
 
 export async function GET() {
   const wixClient = await wixClientServer();
-  try {
-    const products = await wixClient.products.queryProducts().find();
 
-    // Optional: simplify the product fields
-    const simplifiedProducts = products.items.map((item: any) => ({
+  try {
+    const result = await wixClient.products.queryProducts().find();
+    const productList: wixProducts.Product[] = result.items;
+
+    const simplifiedProducts = productList.map((item: wixProducts.Product) => ({
       id: item._id,
       name: item.name,
       description: item.description,
-      price: item.price,
+      price: item.priceData?.formatted?.price || "N/A",
+      productLink: item.slug
+        ? `https://perfect-strands.vercel.app/${item.slug}`
+        : null,
     }));
 
     return NextResponse.json(simplifiedProducts, { status: 200 });

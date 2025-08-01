@@ -1,4 +1,3 @@
- 
 "use client";
 
 import { useEffect, useState, useRef } from "react";
@@ -37,7 +36,7 @@ const ChatWidget = () => {
     setMessages([
       {
         sender: "bot",
-        text: "Hello gorgeous! I'm your virtual wig stylist. 💁‍♀️ Ask me about colors, styles, or care tips!",
+        text: "Hello, beautiful! 👑 I’m your Perfect Strands virtual stylist — here to help iconic queens like you find the perfect wig.\nAsk me anything about human hair, lace fronts, or styling tips. Ready to slay? Let’s crown your confidence. 💁‍♀️✨",
         timestamp: new Date(),
       },
     ]);
@@ -98,8 +97,11 @@ const ChatWidget = () => {
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") sendMessage();
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
   };
 
   if (!isOpen) {
@@ -118,7 +120,7 @@ const ChatWidget = () => {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 w-80 h-[32rem] flex flex-col bg-white rounded-2xl shadow-xl overflow-hidden border border-[#f3e8f1]">
+    <div className="fixed bottom-6 right-6 z-50 w-[90vw] max-w-md h-[70vh] min-h-[400px] max-h-[600px] flex flex-col bg-white rounded-2xl shadow-xl overflow-hidden border border-[#f3e8f1]">
       {/* Header */}
       <div
         className="bg-gradient-to-r from-[#D4AF37] to-[#f5c542] p-3 text-white flex items-center justify-between cursor-pointer"
@@ -144,7 +146,7 @@ const ChatWidget = () => {
             }`}
           >
             <div
-              className={`p-3 rounded-2xl max-w-[80%] ${
+              className={`p-3 rounded-2xl max-w-[90%] break-words whitespace-pre-wrap ${
                 msg.sender === "user"
                   ? "bg-[#3b1f2b] text-white rounded-br-none"
                   : "bg-white text-[#3b1f2b] rounded-bl-none border border-[#f3e8f1]"
@@ -161,7 +163,7 @@ const ChatWidget = () => {
           </div>
         ))}
         {isTyping && (
-          <div className="p-3 rounded-2xl max-w-[80%] bg-white text-[#3b1f2b] rounded-bl-none border border-[#f3e8f1]">
+          <div className="p-3 rounded-2xl max-w-max bg-white text-[#3b1f2b] rounded-bl-none border border-[#f3e8f1]">
             <div className="flex space-x-1">
               <div className="w-2 h-2 bg-[#D4AF37] rounded-full animate-bounce"></div>
               <div className="w-2 h-2 bg-[#D4AF37] rounded-full animate-bounce delay-100"></div>
@@ -174,19 +176,22 @@ const ChatWidget = () => {
 
       {/* Input Area */}
       <div className="p-3 border-t border-[#f3e8f1] bg-white">
-        <div className="flex gap-2">
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyPress={handleKeyPress}
-            className="flex-1 border border-[#f3e8f1] rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/50"
-            placeholder="Ask about wigs, colors, or styles..."
-            aria-label="Type your wig question"
-          />
+        <div className="flex gap-2 items-end">
+          <div className="flex-1 relative">
+            <textarea
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyPress}
+              className="w-full border border-[#f3e8f1] rounded-2xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/50 resize-none min-h-[44px] max-h-[120px]"
+              placeholder="Ask about wigs, colors, or styles..."
+              aria-label="Type your wig question"
+              rows={1}
+            />
+          </div>
           <button
             onClick={sendMessage}
             disabled={!input.trim() || isTyping}
-            className="bg-[#D4AF37] hover:bg-[#c59e2f] text-white p-2 rounded-full disabled:opacity-50 transition-all"
+            className="bg-[#D4AF37] hover:bg-[#c59e2f] text-white p-2 rounded-full disabled:opacity-50 transition-all h-[44px] w-[44px] flex-shrink-0 flex items-center justify-center disabled:cursor-not-allowed"
             aria-label="Send message"
           >
             <Send size={18} />
