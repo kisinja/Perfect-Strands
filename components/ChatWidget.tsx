@@ -161,9 +161,29 @@ const ChatWidget = () => {
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       {...props}
-                      src={(props.src as string) || "/placeholder-product.jpg"}
-                      className="my-2 rounded-xl border border-gray-200 max-w-full h-auto"
+                      src={props.src || "/placeholder-product.jpg"}
+                      className="my-4 rounded-xl border border-gray-200 shadow-md w-full max-w-md mx-auto"
                       alt="Product image"
+                    />
+                  ),
+                  a: ({ node, ...props }) => (
+                    <a
+                      {...props}
+                      className="text-pink-600 underline hover:text-pink-800 font-semibold"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    />
+                  ),
+                  h3: ({ node, ...props }) => (
+                    <h3
+                      className="text-xl font-bold text-gray-900 my-2"
+                      {...props}
+                    />
+                  ),
+                  strong: ({ node, ...props }) => (
+                    <strong
+                      className="text-gray-700 font-semibold"
+                      {...props}
                     />
                   ),
                 }}
