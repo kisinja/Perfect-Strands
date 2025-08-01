@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { Send, MessageSquare, Sparkles, ChevronDown } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 
 function generateSessionId(length = 12) {
   const chars =
@@ -152,7 +153,7 @@ const ChatWidget = () => {
                   : "bg-white text-[#3b1f2b] rounded-bl-none border border-[#f3e8f1]"
               }`}
             >
-              {msg.text}
+              <ReactMarkdown>{msg.text}</ReactMarkdown>
             </div>
             <span className="text-xs text-gray-400 mt-1">
               {msg.timestamp.toLocaleTimeString([], {
