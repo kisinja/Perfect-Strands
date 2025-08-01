@@ -2,9 +2,8 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { Send, MessageSquare, Sparkles, ChevronDown } from "lucide-react";
+import { Send, MessageSquare, Sparkles, ChevronDown, Bot } from "lucide-react";
 import ReactMarkdown from "react-markdown";
-import Image from "next/image";
 
 function generateSessionId(length = 12) {
   const chars =
@@ -111,10 +110,10 @@ const ChatWidget = () => {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-[#D4AF37] to-[#f5c542] text-white p-4 rounded-full shadow-lg hover:scale-105 transition-transform group"
+        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-[#D4AF37] to-[#f5c542] text-white p-3 rounded-full shadow-lg hover:scale-105 transition-transform group"
         aria-label="Open wig consultation chat"
       >
-        <MessageSquare size={24} />
+        <Bot size={28} />
         <span className="absolute -top-1 -right-1 bg-pink-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
           ✨
         </span>
