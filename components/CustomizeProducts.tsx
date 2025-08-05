@@ -16,7 +16,7 @@ const CustomizeProducts = ({ productId, variants, productOptions }: { productId:
 
     useEffect(() => {
         const variant = variants.find((v) => {
-            console.log(v);
+            //console.log(v);
             const variantChoices = v.choices;
             if (!variantChoices) return false;
             return Object.entries(selectedOptions).every(
