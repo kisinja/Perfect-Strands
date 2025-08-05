@@ -8,9 +8,39 @@ export async function GET() {
   const wixClient = await wixClientServer();
 
   try {
+    // Get all products
     const result = await wixClient.products.queryProducts().find();
     const productList: wixProducts.Product[] = result.items;
 
+    // Get all collections
+    const collectionResult = await wixClient.collections
+      .queryCollections()
+      .find();
+    const allCollections = collectionResult.items;
+
+    // Product to collection mapping
+    const productIdToCollectionMap: Record<string, string[]> = {};
+
+    for (const collection of allCollections) {
+      const collectionProducts = await wixClient.collections
+        .queryCollections()
+        .eq("_id", collection?._id)
+        .find();
+
+      for (const product of collectionProducts.items) {
+
+        console.log("Mapping through: ",product);
+
+        if (!productIdToCollectionMap[product._id ?? ""]) {
+          productIdToCollectionMap[product._id ?? ""] = [];
+        }
+        productIdToCollectionMap[product?._id ?? ""].push(
+          collection.name || "Unknown Collection"
+        );
+      }
+    }
+
+    // Simplify product data with collection info
     const simplifiedProducts = productList.map((item: wixProducts.Product) => ({
       id: item._id,
       name: item.name,
@@ -22,6 +52,7 @@ export async function GET() {
       createdAt: new Date(item._createdDate || "").toISOString(),
       imageUrl: item.media?.mainMedia?.image?.url ?? "/placeholder-product.jpg",
       ribbon: item.ribbon || null,
+      collections: productIdToCollectionMap[item._id ?? ""] || [],
     }));
 
     return NextResponse.json(simplifiedProducts, { status: 200 });
