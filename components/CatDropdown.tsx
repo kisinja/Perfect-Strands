@@ -1,7 +1,7 @@
 "use client";
-import { useWixClient } from '@/hooks/useWixCient';
+//import { useWixClient } from '@/hooks/useWixCient';
 import { collections } from '@wix/stores';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
 import { useSearchParams } from 'next/navigation';
+import { WixClientContext } from '@/context/wixContext';
 
 interface CatDropdownProps {
     handleFilterChange: (name: string, value: string) => void;
@@ -19,7 +20,7 @@ const CatDropdown = ({ handleFilterChange }: CatDropdownProps) => {
     // get the selected category from the url
     const searchParams = useSearchParams();
     const searchedCategory = searchParams.get("cat") || "Pick a Category";
-    const wixClient = useWixClient();
+    const { myWixClient: wixClient } = useContext(WixClientContext);
     const [categories, setCategories] = useState<collections.Collection[]>([]);
     const [selectedCategory, setSelectedCategory] = useState(searchedCategory);
 

@@ -1,7 +1,8 @@
 "use client";
+import { WixClientContext } from "@/context/wixContext";
 import { useCartStore } from "@/hooks/useCartStore";
-import { useWixClient } from "@/hooks/useWixCient";
-import { useState, useEffect } from "react";
+//import { useWixClient } from "@/hooks/useWixCient";
+import { useState, useEffect, useContext } from "react";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { toast } from "sonner";
 
@@ -14,7 +15,7 @@ const Add = ({
   variantId: string;
   stockNumber: number;
 }) => {
-  const wixClient = useWixClient();
+  const { myWixClient: wixClient } = useContext(WixClientContext);
   const [quantity, setQuantity] = useState(1);
   const { isLoading, addItem } = useCartStore();
   const [message, setMessage] = useState<string | null>(null);

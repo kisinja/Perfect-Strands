@@ -1,11 +1,12 @@
 "use client";
 
-import { useWixClient } from "@/hooks/useWixCient";
+//import { useWixClient } from "@/hooks/useWixCient";
 import { LoginState } from "@wix/sdk";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import { WixClientContext } from "@/context/wixContext";
 
 enum MODE {
   LOGIN = "LOGIN",
@@ -24,7 +25,7 @@ const Login = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
-  const wixClient = useWixClient();
+  const { myWixClient: wixClient } = useContext(WixClientContext);
   const router = useRouter();
   const [pathName, setPathName] = useState<string>("");
 

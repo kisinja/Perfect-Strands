@@ -6,6 +6,7 @@ import { WixClientContextProvider } from "@/context/wixContext";
 import { Toaster } from "@/components/ui/sonner";
 // Import your chat widget
 import ChatWidget from "@/components/ChatWidget";
+import FeatureIntroModal from "@/components/FeatureIntroModal";
 
 
 export const metadata: Metadata = {
@@ -33,6 +34,8 @@ export default function RootLayout({
 
           {/* Chat Widget - fixed on all pages */}
           <ChatWidget />
+
+          <FeatureIntroModal />
 
           <Toaster
             position="top-right"

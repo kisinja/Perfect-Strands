@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -10,13 +10,14 @@ import {
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { useWixClient } from "@/hooks/useWixCient";
+//import { useWixClient } from "@/hooks/useWixCient";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { toast } from "sonner";
+import { WixClientContext } from "@/context/wixContext";
 
 const NavProfile = () => {
-    const wixClient = useWixClient();
+    const { myWixClient: wixClient } = useContext(WixClientContext);
     const isLoggedIn = wixClient.auth.loggedIn();
     const router = useRouter();
 

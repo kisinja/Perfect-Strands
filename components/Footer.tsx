@@ -4,6 +4,7 @@ import { RiCustomerService2Fill } from "react-icons/ri";
 import { MdOutlineLocalShipping, MdOutlinePayment } from "react-icons/md";
 import { FaShieldAlt } from "react-icons/fa";
 import Image from "next/image";
+import { formatPrice } from "@/utils";
 
 const Footer = () => {
   return (
@@ -14,7 +15,13 @@ const Footer = () => {
           <div className="flex flex-col items-center">
             <MdOutlineLocalShipping className="text-3xl text-[lightPink] mb-3" />
             <h4 className="font-medium text-lg">Free Shipping</h4>
-            <p className="text-sm text-[#3b1f2b]/80">On orders over $100</p>
+            <p className="text-sm text-[#3b1f2b]/80">
+              On orders over
+              {" "}
+              <span className="text-gray-700 font-semibold">
+                {formatPrice(10000)}
+              </span>
+            </p>
           </div>
           <div className="flex flex-col items-center">
             <RiCustomerService2Fill className="text-3xl text-[lightPink] mb-3" />

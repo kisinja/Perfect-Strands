@@ -4,16 +4,17 @@
 import Image from "next/image";
 import { useCartStore } from "@/hooks/useCartStore";
 import { media as wixMedia } from "@wix/sdk";
-import { useWixClient } from "@/hooks/useWixCient";
+//import { useWixClient } from "@/hooks/useWixCient";
 import { formatPrice } from "@/utils";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { FiX } from "react-icons/fi";
 import Link from "next/link";
 import { Trash } from "lucide-react";
+import { WixClientContext } from "@/context/wixContext";
 
 const CartModal = ({ onClose }: { onClose: () => void }) => {
-  const wixClient = useWixClient();
+  const { myWixClient: wixClient } = useContext(WixClientContext);
   const { cart, isLoading, removeItem, getCart } = useCartStore();
 
   useEffect(() => {

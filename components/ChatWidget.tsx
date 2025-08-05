@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { Send, MessageSquare, Sparkles, ChevronDown, Bot } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import { WixClientContext } from "@/context/wixContext";
 
 function generateSessionId(length = 12) {
   const chars =
@@ -20,10 +21,12 @@ type Message = {
 };
 
 const ChatWidget = () => {
+
+  const { setIsChatWidgetOpen, isChatWidgetOpen } = useContext(WixClientContext);
+
   const [sessionId, setSessionId] = useState<string | null>("");
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -106,10 +109,10 @@ const ChatWidget = () => {
     }
   };
 
-  if (!isOpen) {
+  if (!isChatWidgetOpen) {
     return (
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={() => setIsChatWidgetOpen(true)}
         className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-[#D4AF37] to-[#f5c542] text-white p-3 rounded-full shadow-lg hover:scale-105 transition-transform group"
         aria-label="Open wig consultation chat"
       >
@@ -126,7 +129,7 @@ const ChatWidget = () => {
       {/* Header */}
       <div
         className="bg-gradient-to-r from-[#D4AF37] to-[#f5c542] p-3 text-white flex items-center justify-between cursor-pointer"
-        onClick={() => setIsOpen(false)}
+        onClick={() => setIsChatWidgetOpen(false)}
       >
         <div className="flex items-center">
           <MessageSquare className="mr-2" />
@@ -142,16 +145,14 @@ const ChatWidget = () => {
         {messages.map((msg, idx) => (
           <div
             key={idx}
-            className={`flex flex-col ${
-              msg.sender === "user" ? "items-end" : "items-start"
-            }`}
+            className={`flex flex-col ${msg.sender === "user" ? "items-end" : "items-start"
+              }`}
           >
             <div
-              className={`p-3 rounded-2xl max-w-[90%] break-words whitespace-pre-wrap ${
-                msg.sender === "user"
+              className={`p-3 rounded-2xl max-w-[90%] break-words whitespace-pre-wrap ${msg.sender === "user"
                   ? "bg-[#3b1f2b] text-white rounded-br-none"
                   : "bg-white text-[#3b1f2b] rounded-bl-none border border-[#f3e8f1]"
-              }`}
+                }`}
             >
               <ReactMarkdown
                 components={{

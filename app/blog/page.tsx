@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { format } from 'date-fns';
-import { useWixClient } from '@/hooks/useWixCient';
+//import { useWixClient } from '@/hooks/useWixCient';
 import { FaSearch } from 'react-icons/fa';
+import { WixClientContext } from '@/context/wixContext';
 
 interface BlogPost {
     _id: string;
@@ -24,7 +25,8 @@ interface BlogPost {
 }
 
 const Blog = () => {
-    const wixClient = useWixClient();
+    const { myWixClient: wixClient } = useContext
+    (WixClientContext);
     const [posts, setPosts] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState(true);
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
