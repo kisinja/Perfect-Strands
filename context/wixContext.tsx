@@ -46,6 +46,8 @@ export const WixClientContext = createContext<WixClientContextType>({
     setIsChatWidgetOpen: () => { }, // no-op default
 });
 
+export type WixClient = typeof myWixClient;
+
 // ✅ Context Provider
 export const WixClientContextProvider = ({ children }: { children: ReactNode }) => {
     const [isChatWidgetOpen, setIsChatWidgetOpen] = useState(false);
