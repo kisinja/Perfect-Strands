@@ -21,8 +21,8 @@ type Message = {
 };
 
 const ChatWidget = () => {
-
-  const { setIsChatWidgetOpen, isChatWidgetOpen } = useContext(WixClientContext);
+  const { setIsChatWidgetOpen, isChatWidgetOpen } =
+    useContext(WixClientContext);
 
   const [sessionId, setSessionId] = useState<string | null>("");
   const [input, setInput] = useState("");
@@ -145,14 +145,16 @@ const ChatWidget = () => {
         {messages.map((msg, idx) => (
           <div
             key={idx}
-            className={`flex flex-col ${msg.sender === "user" ? "items-end" : "items-start"
-              }`}
+            className={`flex flex-col ${
+              msg.sender === "user" ? "items-end" : "items-start"
+            }`}
           >
             <div
-              className={`p-3 rounded-2xl max-w-[90%] break-words whitespace-pre-wrap ${msg.sender === "user"
+              className={`p-3 rounded-2xl max-w-[90%] break-words whitespace-pre-wrap ${
+                msg.sender === "user"
                   ? "bg-[#3b1f2b] text-white rounded-br-none"
                   : "bg-white text-[#3b1f2b] rounded-bl-none border border-[#f3e8f1]"
-                }`}
+              }`}
             >
               <ReactMarkdown
                 components={{

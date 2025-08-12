@@ -1,3 +1,7 @@
+import { Blog } from "@/.contentlayer/generated";
+import { compareDesc, parseISO } from "date-fns";
+
+// Slides data for the homepage carousel
 export const slides = [
   {
     id: 1,
@@ -61,6 +65,7 @@ export const slides = [
   },
 ];
 
+// Utility function to format price
 export const formatPrice = (
   value: number,
   currency: string = "KES",
@@ -72,4 +77,17 @@ export const formatPrice = (
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(value);
+};
+
+// Utility function to join class names conditionally
+export const cx = (
+  ...classNames: (string | undefined | null | false)[]
+): string => classNames.filter(Boolean).join(" ");
+
+
+// Utility function to sort blogs by publish date in descending order
+export const sortBlogs = (blogs: Blog[]) => {
+  return blogs
+    .slice()
+    .sort((a, b) => compareDesc(parseISO(a.publishAt), parseISO(b.publishAt)));
 };

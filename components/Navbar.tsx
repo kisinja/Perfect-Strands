@@ -51,10 +51,11 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-sm flex items-center gap-1 pb-1 font-medium transition-all duration-200 ${isActive
-                    ? "border-b-2"
-                    : "border-b-2 border-[#fff0f5] hover:border-pink-300"
-                    }`}
+                  className={`text-sm flex items-center gap-1 pb-1 font-medium transition-all duration-200 ${
+                    isActive
+                      ? "border-b-2"
+                      : "border-b-2 border-[#fff0f5] hover:border-pink-300"
+                  }`}
                   style={{
                     borderColor: isActive ? "#fff0f5" : "transparent",
                     color: isActive ? "#ffff" : "#3b1f2b",

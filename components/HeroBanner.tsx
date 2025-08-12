@@ -38,23 +38,23 @@ const HeroBanner: React.FC = () => {
             initial={{
               x: Math.random() * 100,
               y: Math.random() * 100,
-              opacity: 0
+              opacity: 0,
             }}
             animate={{
               x: Math.random() * 100,
               y: Math.random() * 100,
               opacity: [0, 0.8, 0],
-              scale: [1, 1.5, 1]
+              scale: [1, 1.5, 1],
             }}
             transition={{
               duration: 3 + Math.random() * 5,
               repeat: Infinity,
               repeatType: "reverse",
-              delay: Math.random() * 5
+              delay: Math.random() * 5,
             }}
             style={{
               left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`
+              top: `${Math.random() * 100}%`,
             }}
           >
             <Sparkle size={16} />
@@ -86,7 +86,8 @@ const HeroBanner: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          Handcrafted luxury wigs for the modern queen. 100% virgin human hair, ethically sourced.
+          Handcrafted luxury wigs for the modern queen. 100% virgin human hair,
+          ethically sourced.
         </motion.p>
 
         {/* CTA */}
@@ -105,12 +106,14 @@ const HeroBanner: React.FC = () => {
 
         {/* Scroll Indicator */}
         <motion.div
-          className="absolute bottom-12 animate-bounce"
+          className="absolute bottom-8 animate-bounce"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
         >
-          <ChevronDown className="text-white h-8 w-8" />
+          <Link href="#featured-products">
+            <ChevronDown className="text-white h-8 w-8" />
+          </Link>
         </motion.div>
       </div>
     </motion.section>

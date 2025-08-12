@@ -66,13 +66,13 @@ export const PromoGrid = () => {
             {/* Content Overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent flex items-center">
               <div className="container mx-auto px-8 max-w-4xl">
-                <div className="text-sm uppercase tracking-widest text-pink-300 font-medium mb-4">
+                <div className="text-[16px] uppercase tracking-widest text-pink-300 font-medium mb-4">
                   { slide.subtitle || "Premium Collection"}
                 </div>
-                <h2 className="text-4xl font-bold text-white mb-6">
+                <h2 className="text-6xl font-bold text-white mb-6">
                   {slide.title}
                 </h2>
-                <p className="text-lg text-gray-200 mb-8 max-w-2xl">
+                <p className="text-xl text-gray-200 mb-8 max-w-2xl">
                   {slide.description}
                 </p>
                 <Link href={slide.url}>
