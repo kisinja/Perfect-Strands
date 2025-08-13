@@ -24,7 +24,7 @@ export async function generateStaticParams() {
   });
 
   return paths;
-};
+}
 
 const CategoriesPage = async ({ params }: { params: ParamsProps }) => {
   const { slug } = await params;
@@ -45,10 +45,6 @@ const CategoriesPage = async ({ params }: { params: ParamsProps }) => {
     });
   });
 
-  if(blogs.length === 0) {
-    return <p>No blogs found in this category.</p>;
-  }
-
   return (
     <article className="mt-4 flex flex-col text-black blog-font">
       <section className=" flex flex-col ">
@@ -60,11 +56,17 @@ const CategoriesPage = async ({ params }: { params: ParamsProps }) => {
       <Categories categories={allCategories} active={slug} />
 
       <section className="grid grid-cols-2 sm:grid-cols-3 grid-rows-2 gap-16 mt-8">
-        {blogs.map((b, idx: number) => (
-          <article key={idx} className="col-span-1 row-span-1 relative">
-            <BlogLayoutThree blog={b} />
-          </article>
-        ))}
+        {blogs.length === 0 ? (
+          <div className="min-h-screen flex items-center justify-center text-gray-600 text-lg text-center">
+            No blogs found in this category.
+          </div>
+        ) : (
+          blogs.map((b, idx: number) => (
+            <article key={idx} className="col-span-1 row-span-1 relative">
+              <BlogLayoutThree blog={b} />
+            </article>
+          ))
+        )}
       </section>
     </article>
   );
