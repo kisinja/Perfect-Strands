@@ -19,7 +19,7 @@ const ProductList = async ({
   relatedProducts?: any[];
 }) => {
   const wixClient = await wixClientServer();
-  const productQuery = await wixClient.products
+  const productQuery = wixClient.products
     .queryProducts()
     .startsWith(
       "name",

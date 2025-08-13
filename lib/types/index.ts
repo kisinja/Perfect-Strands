@@ -1,5 +1,9 @@
 export type ParamsProps = Promise<{ slug: string }>;
 
+export type SearchParamsProps = Promise<{
+   type?: string; minPrice?: number; maxPrice?: number; sort?: string; page?: string; name?: string; [key: string]: string | string[] | number | undefined; cat?:string;
+}>;
+
 export type Blog = {
   _id: string;
   title: string;

@@ -26,11 +26,39 @@ const ChatWidget = () => {
 
   const [sessionId, setSessionId] = useState<string | null>("");
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>(() => {
+    const savedMessages =
+      typeof window !== "undefined"
+        ? localStorage.getItem("wigAssistantMessages")
+        : null;
+
+    if (savedMessages) {
+      try {
+        const parsedMessages = JSON.parse(savedMessages);
+
+        // Convert string timestamps back to Date objects
+        return parsedMessages.map((m: Message) => ({
+          ...m,
+          timestamp: new Date(m.timestamp),
+        }));
+      } catch (error) {
+        console.error("Failed to parse saved messages", error);
+        return [];
+      }
+    }
+    return [];
+  });
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Initialize session and welcome message
+  // Save messages to localStorage
+  useEffect(() => {
+    if (messages.length > 0) {
+      localStorage.setItem("wigAssistantMessages", JSON.stringify(messages));
+    }
+  }, [messages]);
+
+  // Initialize session and welcome message. Only add if not already present
   useEffect(() => {
     const existingSessionId =
       localStorage.getItem("wigChatSessionId") ||
@@ -38,14 +66,16 @@ const ChatWidget = () => {
     localStorage.setItem("wigChatSessionId", existingSessionId);
     setSessionId(existingSessionId);
 
-    setMessages([
-      {
-        sender: "bot",
-        text: "Hello, beautiful! 👑 I’m your Perfect Strands virtual stylist — here to help iconic queens like you find the perfect wig.\nAsk me anything about human hair, lace fronts, or styling tips. Ready to slay? Let’s crown your confidence. 💁‍♀️✨",
-        timestamp: new Date(),
-      },
-    ]);
-  }, []);
+    if (messages.length === 0) {
+      setMessages([
+        {
+          sender: "bot",
+          text: "Hello, beautiful! 👑 I’m your Perfect Strands virtual stylist — here to help iconic queens like you find the perfect wig.\nAsk me anything about human hair, lace fronts, or styling tips. Ready to slay? Let’s crown your confidence. 💁‍♀️✨",
+          timestamp: new Date(),
+        },
+      ]);
+    }
+  }, [messages.length]);
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
@@ -150,7 +180,7 @@ const ChatWidget = () => {
             }`}
           >
             <div
-              className={`p-3 rounded-2xl max-w-[90%] break-words whitespace-pre-wrap ${
+              className={`p-3 rounded-2xl max-w-[90%] break-words whitespace-pre-wrap text-base ${
                 msg.sender === "user"
                   ? "bg-[#3b1f2b] text-white rounded-br-none"
                   : "bg-white text-[#3b1f2b] rounded-bl-none border border-[#f3e8f1]"
@@ -163,7 +193,7 @@ const ChatWidget = () => {
                     <img
                       {...props}
                       src={props.src || "/placeholder-product.jpg"}
-                      className="my-4 rounded-xl border border-gray-200 shadow-md w-full max-w-md mx-auto"
+                      className="my-2 rounded-xl border border-gray-200 shadow-md w-full max-w-md mx-auto"
                       alt="Product image"
                     />
                   ),
@@ -177,13 +207,19 @@ const ChatWidget = () => {
                   ),
                   h3: ({ node, ...props }) => (
                     <h3
-                      className="text-xl font-bold text-gray-900 my-2"
+                      className="text-xl font-bold text-gray-800 my-1"
                       {...props}
                     />
                   ),
                   strong: ({ node, ...props }) => (
                     <strong
-                      className="text-gray-700 font-semibold"
+                      className="text-gray-900 font-semibold"
+                      {...props}
+                    />
+                  ),
+                  p: ({ node, ...props }) => (
+                    <p
+                      className="text-base"
                       {...props}
                     />
                   ),
