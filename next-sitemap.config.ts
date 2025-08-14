@@ -1,9 +1,9 @@
-import { allBlogs } from "./.contentlayer/generated"; // adjust path
-import { siteUrl as _siteUrl } from "./utils/siteMetaData"; // adjust path
+import { allBlogs } from "./.contentlayer/generated"; // Contentlayer ESM
+import siteMetaData from "./utils/siteMetaData";
 
 /** @type {import('next-sitemap').IConfig} */
 const config = {
-  siteUrl: _siteUrl,
+  siteUrl: siteMetaData.siteUrl,
   generateRobotsTxt: true,
   sitemapSize: 5000,
   changefreq: "daily",
@@ -12,7 +12,7 @@ const config = {
   // Add dynamic blog pages
   additionalPaths: async () => {
     return allBlogs.map((blog) => ({
-      loc: `${_siteUrl}${blog.url}`,
+      loc: `${siteMetaData.siteUrl}${blog.url}`,
       lastmod: new Date(blog.updatedAt).toISOString(),
       changefreq: "weekly",
       priority: 0.8,

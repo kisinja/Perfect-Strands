@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "contentlayer2 build && next build",
     "postinstall": "contentlayer2 build",
-    "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap --config next-sitemap.config.ts",
     "start": "next start",
     "lint": "next lint"
   },

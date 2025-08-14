@@ -33,6 +33,6 @@
     "next.config.mjs",
     "lib/langchain/agent.js",
     "lib/langchain/testAgent.js"
-, "tailwind.config.js", "next-sitemap.config.js"  ],
+, "tailwind.config.js", "next-sitemap.config.ts"  ],
   "exclude": ["node_modules"]
 }
