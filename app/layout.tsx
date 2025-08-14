@@ -56,6 +56,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <meta name="google-site-verification" content="_d5Z8qg29syNJWkHvBxFPLv9pvYoIV7r6yp-sn3yaTk" />
       <body className="font-sans antialiased relative">
         <WixClientContextProvider>
           <div className="min-h-screen flex flex-col">
