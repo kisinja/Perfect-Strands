@@ -12,7 +12,7 @@ const config: IConfig = {
   // Add dynamic blog pages
   additionalPaths: async (): Promise<ISitemapField[]> => {
     return allBlogs.map((blog) => ({
-      loc: `${siteMetaData.siteUrl}/blogs/${blog._raw.flattenedPath}`,
+      loc: `${siteMetaData.siteUrl}${blog.url}`,
       lastmod: new Date(blog.updatedAt).toISOString(),
       changefreq: "weekly",
       priority: 0.8,
