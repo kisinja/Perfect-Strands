@@ -84,10 +84,19 @@ export const cx = (
   ...classNames: (string | undefined | null | false)[]
 ): string => classNames.filter(Boolean).join(" ");
 
-
 // Utility function to sort blogs by publish date in descending order
 export const sortBlogs = (blogs: Blog[]) => {
   return blogs
     .slice()
     .sort((a, b) => compareDesc(parseISO(a.publishAt), parseISO(b.publishAt)));
 };
+
+// Insights
+export const insights = [
+  "50,000+ products Sold 👑.",
+  "99% Client Satisfaction. ",
+  "We offer a 30-day return policy, so you can shop with confidence. ✅",
+  "Proudly Black-owned—celebrating diversity in textures, lengths, and styles ✊🏿.",
+  "Join our community of satisfied customers and experience the Perfect Strands difference. 💖",
+  "We ship worldwide with fast, reliable delivery options to get your perfect wig to you quickly 🌍.",
+];

@@ -2,10 +2,12 @@ import Image from "next/image";
 import React from "react";
 import { FaCrown, FaGem, FaAward } from "react-icons/fa";
 import { Sparkles } from "lucide-react";
+import Link from "next/link";
 
 export const metadata = {
   title: "ABOUT US | PERFECT STRANDS",
-  description: "Discover the luxury behind Perfect Strands - where every wig is crafted to make you sparkle & shine",
+  description:
+    "Discover the luxury behind Perfect Strands - where every wig is crafted to make you sparkle & shine",
 };
 
 const AboutPage = () => {
@@ -58,10 +60,15 @@ const AboutPage = () => {
               </div>
 
               <p className="text-lg text-[#3b1f2b]/90 leading-relaxed mb-6">
-                At <span className="font-bold text-[#D4AF37]">PERFECT STRANDS</span>,
-                we believe every woman deserves to <span className="font-semibold">sparkle & shine</span>.
-                Founded by a passionate beauty visionary, our brand celebrates the
-                intersection of luxury, individuality, and uncompromising quality.
+                At{" "}
+                <span className="font-bold text-[#D4AF37]">
+                  PERFECT STRANDS
+                </span>
+                , we believe every woman deserves to{" "}
+                <span className="font-semibold">sparkle & shine</span>. Founded
+                by a passionate beauty visionary, our brand celebrates the
+                intersection of luxury, individuality, and uncompromising
+                quality.
               </p>
 
               <p className="text-lg text-[#3b1f2b]/90 leading-relaxed mb-8">
@@ -73,7 +80,8 @@ const AboutPage = () => {
 
               <div className="mt-6 pt-6 border-t border-[#D4AF37]/30">
                 <p className="font-medium text-[#3b1f2b] italic text-lg">
-                  &quot;True beauty begins the moment you decide to be yourself.&quot;
+                  &quot;True beauty begins the moment you decide to be
+                  yourself.&quot;
                 </p>
               </div>
             </div>
@@ -98,18 +106,21 @@ const AboutPage = () => {
             {
               icon: <FaCrown size={28} />,
               title: "EMPOWERMENT",
-              description: "We create products that help women embrace their unique beauty with unshakable confidence and self-assurance."
+              description:
+                "We create products that help women embrace their unique beauty with unshakable confidence and self-assurance.",
             },
             {
               icon: <FaGem size={28} />,
               title: "ELEGANCE",
-              description: "Our designs blend timeless sophistication with contemporary trends to create effortlessly chic hair solutions."
+              description:
+                "Our designs blend timeless sophistication with contemporary trends to create effortlessly chic hair solutions.",
             },
             {
               icon: <FaAward size={28} />,
               title: "EXCELLENCE",
-              description: "From sourcing premium materials to perfecting every detail, we deliver nothing less than exceptional quality."
-            }
+              description:
+                "From sourcing premium materials to perfecting every detail, we deliver nothing less than exceptional quality.",
+            },
           ].map((value, index) => (
             <div
               key={index}
@@ -121,9 +132,7 @@ const AboutPage = () => {
               <h3 className="text-2xl font-bold text-[#3b1f2b] mb-4 uppercase tracking-wider">
                 {value.title}
               </h3>
-              <p className="text-[#3b1f2b]/80">
-                {value.description}
-              </p>
+              <p className="text-[#3b1f2b]/80">{value.description}</p>
             </div>
           ))}
         </div>
@@ -143,9 +152,11 @@ const AboutPage = () => {
             worldwide embrace their natural beauty while exploring
             transformative possibilities.
           </p>
-          <button className="bg-[#D4AF37] hover:bg-[#c5a233] text-white font-bold py-3 px-10 rounded-full transition-all duration-300 uppercase tracking-wider shadow-md hover:shadow-lg">
-            SHOP COLLECTIONS
-          </button>
+          <Link href={"/shop"} className="group">
+            <button className="bg-[#D4AF37] hover:bg-[#c5a233] text-white font-bold py-3 px-8 rounded-full transition-all duration-300 uppercase tracking-wider shadow-md hover:shadow-lg group-hover:scale-105 active:scale-95 active:bg-white active:text-[#D4AF37] active:border active:border-[#D4AF37]">
+              shop collections
+            </button>
+          </Link>
         </div>
       </section>
 

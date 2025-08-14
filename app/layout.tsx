@@ -7,13 +7,45 @@ import { Toaster } from "@/components/ui/sonner";
 // Import your chat widget
 import ChatWidget from "@/components/ChatWidget";
 import FeatureIntroModal from "@/components/FeatureIntroModal";
-
+import siteMetaData from "@/utils/siteMetaData";
 
 export const metadata: Metadata = {
-  title: "Perfect Strands",
-  description: "Trend-Setting Wigs for Iconic Queens",
+  metadataBase: new URL(siteMetaData.siteUrl),
+  title: {
+    template: `%s | ${siteMetaData.title}`,
+    default: siteMetaData.title,
+  },
+  description: siteMetaData.description,
   icons: {
     icon: "/favicon.ico",
+  },
+  openGraph: {
+    title: siteMetaData.title,
+    description: siteMetaData.description,
+    url: siteMetaData.siteUrl,
+    siteName: siteMetaData.title,
+    images: [
+      {
+        url: siteMetaData.socialBanner,
+        width: 1200,
+        height: 630,
+        alt: siteMetaData.title,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

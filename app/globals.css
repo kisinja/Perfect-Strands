@@ -92,6 +92,19 @@ section {
   font-family: "Poppins", sans-serif;
 }
 
+.animation-roll {
+  animation: roll 24s linear infinite;
+}
+
+@keyframes roll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 /* Extra animation */
 @keyframes bounce-horizontal {
   0%,

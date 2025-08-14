@@ -26,6 +26,16 @@ export async function generateStaticParams() {
   return paths;
 }
 
+export async function generateMetadata({ params }: { params: ParamsProps }) {
+  const { slug } = await params;
+  return {
+    title: `${slug.replaceAll("-", " ")} Blogs`,
+    description: `Learn more about ${
+      slug === "all" ? "wigs" : slug.replaceAll("-", " ")
+    } through our collection of expert blogs and tutorials`,
+  };
+}
+
 const CategoriesPage = async ({ params }: { params: ParamsProps }) => {
   const { slug } = await params;
 

@@ -5,6 +5,7 @@ import BlogTag from "@/components/BlogTag";
 import RenderMdx from "@/components/RenderMdx";
 import TableofContents from "@/components/TableofContents";
 import { ParamsProps } from "@/lib/types";
+import siteMetaData from "@/utils/siteMetaData";
 import GithubSlugger from "github-slugger";
 import Image from "next/image";
 import React from "react";
@@ -13,6 +14,50 @@ const slugger = new GithubSlugger();
 
 export async function generateStaticParams() {
   return allBlogs.map((b) => ({ slug: b._raw.flattenedPath }));
+};
+
+export async function generateMetadata({ params }: { params: ParamsProps }) {
+  const { slug } = await params;
+  const blog = allBlogs.find((b) => b._raw.flattenedPath === slug);
+
+  if (!blog) {
+    return;
+  }
+
+  const publishedAtBlog = new Date(blog.publishAt).toISOString();
+  const modifiedAtBlog = new Date(blog.updatedAt).toISOString();
+
+  let imageList = [siteMetaData.socialBanner];
+  if (blog.image) {
+    imageList =
+      typeof blog.image === "string"
+        ? [siteMetaData.siteUrl + blog.image]
+        : blog.image;
+  }
+
+  const ogImages = imageList.map((img) => {
+    return {
+      url: img.includes("http") ? img : `${siteMetaData.siteUrl}${img}`,
+    };
+  });
+
+  const authors = blog?.author ? [blog.author] : [siteMetaData.author];
+
+  return {
+    title: blog.title,
+    description: blog.description,
+    openGraph: {
+      title: blog.title,
+      description: blog.description,
+      url: `${siteMetaData.siteUrl}${blog.url}`,
+      siteName: siteMetaData.title,
+      type: "article",
+      publishedTime: publishedAtBlog,
+      modifiedTime: modifiedAtBlog,
+      images: ogImages,
+      authors: authors.length > 0 ? authors : [siteMetaData.author],
+    },
+  };
 };
 
 const BlogDetailsPage = async ({ params }: { params: ParamsProps }) => {
